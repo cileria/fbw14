@@ -1,0 +1,42 @@
+header h1, header h2, header h3 {
+    text-align: center
+}
+
+.farbe1 {
+    color:blue;
+}
+
+.seite {
+    display: flex;
+}
+
+.background {
+    background-image: url('./images/tree.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height:400px;
+    width:450px;
+
+}
+
+.Image_2 {
+    box-sizing: border-box;
+    border: 1px solid blue; 
+    padding: 30px;
+    width:600px;
+}
+
+span:nth-child(even) {
+    background: aqua;
+}
+
+@media screen and (max-width:600px; {
+    .mediaquery {
+        background:blue;
+        width:5rem;
+        height:5rem;
+    }
+}
