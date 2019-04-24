@@ -1,0 +1,200 @@
+*{
+    padding: 0;
+    margin: 10px;
+}
+@media only screen and (max-width:  768px){
+   div.mediaquery{
+       background-color: blue;
+       width: 5rem ;
+       height: 5rem ;
+   }
+}/* Die Größe für Mobile*/
+@media only screen and (min-width: 769px)and (max-width: 1024px){
+    div.mediaquery{
+        background-color: yellow;
+        width: 7rem ;
+        height: 7rem ;
+    }
+}/* Die Größe für Tablet*/
+
+@media screen and (min-width: 1025px)and (max-width: 1440px) {
+    div.mediaquery{
+        background-color: red;
+        width: 10rem ;
+        height: 10rem ;
+    }
+}/* Die Größe für Desktop*/
+
+@media screen and (min-width: 1441px){
+    div.mediaquery{
+        background-color: purple;
+        width: 12rem ;
+        height: 12rem ;
+    }
+}/* Die Größe für große Desktop*/
+
+/* default style for test */
+
+header {
+    text-align: center;
+    background-color: white;
+    position: fixed;
+    top: 0px;
+    }
+main{
+    margin-top: 136px;
+}
+    li {
+        color:blue;
+        margin-bottom: 10px;
+       text-decoration: line-through;
+    }
+
+    span {
+    width: 95%;
+    padding: .5rem;
+    border: 1px solid black;
+    margin: .5rem;
+    display: inline-block;
+}
+    span:nth-child(1){
+        background-color: chartreuse;
+    }
+    span:nth-child(2){
+        background-color: aqua;
+    }
+    span:nth-child(3){
+        background-color: darkorange;
+    }
+    span:nth-child(4){
+        background-color: salmon;
+    }
+    span:nth-child(5){
+        background-color:whitesmoke;
+    }
+    span:nth-child(6){
+        background-color: gold;
+    }
+    span:nth-child(7){
+        background-color:indigo;
+    }
+    span:nth-child(8){
+        background-color:rosybrown;
+    }
+    span:nth-child(9){
+        background-color:brown;
+    }
+    span:nth-child(10){
+        background-color: deeppink;
+    }
+
+            
+    .container {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    border: 2px solid blue;
+    height: 10rem;
+    width: 10rem;
+    margin: 1rem;  
+    }
+
+    .flex-grow{
+        flex-grow: 1;
+    }
+    .mediaquery {
+    border: 2px solid black;
+    background-color: cyan;
+    width: 300px;
+    height: 300px;
+    }
+
+    .box {
+    border: 2px solid black;
+    height: 20rem;
+    width: 20rem;
+    }
+    
+    .relative, .absolute {
+    border: 2px solid blue;
+    }
+
+    .relative {
+    position: relative;
+    right: 0px;
+    top: 0px;
+    height: 10rem;
+    width: 10rem;
+    }
+
+    .absolute {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 5rem;
+    width: 5rem;
+    }
+    
+    /* <!-- Images Section --> */
+    .background{
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat:no-repeat;
+        margin: 0 auto;
+    }
+     
+
+    img[alt="Image 2"]{
+        padding: 5px;
+        border: 2px solid blue;
+    }
+
+
+    .wrapper{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows:25% 25% 25% 25%;
+        border: 2px solid blue;
+        grid-gap: 5px;
+    }
+    
+    .cell{
+        border: 2px solid blue;
+        
+    }
+
+    .two{
+        /* grid-row: 1;  */
+        grid-column: 1 / span 2;        
+    }
+    /* .three{ */
+        /* grid-row: ; */
+        /* grid-column: ; */
+    /* } */
+
+    /* .seven{ */
+        /* grid-row: ; */
+        /* grid-column: ; */
+    /* } */
+
+    h3{
+        /* font size and font family of the class */
+
+        color: green;
+        font-size: 24px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    footer ul li a:visited{
+        color: crimson;
+    }
+
+    footer ul li a:hover{
+        color: purple;
+    }
