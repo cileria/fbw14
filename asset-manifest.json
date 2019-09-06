@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/css/main.2cce8147.chunk.css",
+    "main.js": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/js/main.f907b8e5.chunk.js",
+    "main.js.map": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/js/main.f907b8e5.chunk.js.map",
+    "runtime~main.js": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/js/runtime~main.d3ac96a9.js",
+    "runtime~main.js.map": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/js/runtime~main.d3ac96a9.js.map",
+    "static/css/2.266e55a5.chunk.css": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/css/2.266e55a5.chunk.css",
+    "static/js/2.5e3abc32.chunk.js": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/js/2.5e3abc32.chunk.js",
+    "static/js/2.5e3abc32.chunk.js.map": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/js/2.5e3abc32.chunk.js.map",
+    "index.html": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/index.html",
+    "precache-manifest.06f0f8e9b99689f3ab2d96c8c5d61df7.js": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/precache-manifest.06f0f8e9b99689f3ab2d96c8c5d61df7.js",
+    "service-worker.js": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.2cce8147.chunk.css.map": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/css/main.2cce8147.chunk.css.map",
+    "static/media/katze.jpg": "/foobaroo/fbw14/tree/master/react/01_helloreact/hello-react/static/media/katze.9597e258.jpg"
+  }
+}
