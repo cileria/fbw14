@@ -1,0 +1,7 @@
+@media screen and (min-width:769px) and  (max-width:1024px){
+    .mediaquery{
+        background: yellow;
+        width:7rem;
+        height:7rem;
+    }
+}

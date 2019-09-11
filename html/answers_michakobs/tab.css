@@ -1,0 +1,7 @@
+@media screen and (min-width:1024px) and  (max-width:1440px){
+    .mediaquery{
+        background: red;
+        width:10rem;
+        height:10rem;
+    }
+}

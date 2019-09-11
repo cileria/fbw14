@@ -1,0 +1,7 @@
+@media screen and (min-width:1441px){
+    .mediaquery{
+        background:purple;
+        width:12rem;
+        height:12rem;
+    }
+}
