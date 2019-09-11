@@ -1,0 +1,21 @@
+Aufgabe:
+~~~~~~~~
+
+John und sein Kumpel haben ein Spiel erfunden, bei dem der Spieler mit der
+größten Körpergröße in Zentimeter + das Fünffache seines Alters das Spiel gewinnt.
+
+1. Erstelle zwei Variablen für die beiden Körpergrößen und zwei Variablen für ihr
+Alter und gib diesen Werte.
+
+2. Berechne ihre beiden Scores.
+
+3. Entscheide wer gewinnt und gib den Gewinner auf der Konsole aus. Der Name des Gewinners
+soll mit ihm String dabei sein, den Du auf der Konsole ausgibst. Beachte, dass es auch ein 
+unentschieden geben kann (wenn beide Spieler die gleiche Score haben)
+
+EXTRA-Aufgabe:
+Füge einen dritten Spieler hinzu und entscheide jetzt wer gewinnt. (Dafür brauchst Du definitiv den
+&& - Operator)
+
+Verzeichnisvorschlag: codingchallenge1/
+

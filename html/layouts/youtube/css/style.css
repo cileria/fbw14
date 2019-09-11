@@ -1,0 +1,113 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  width: 100%; }
+
+.navigation-2 {
+  display: none;
+  border: 2px solid darkblue;
+  background: #92d050; }
+
+header {
+  height: 50px;
+  border: 2px solid darkblue;
+  background: cornflowerblue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center; }
+  header .logo {
+    margin-left: 10px;
+    border: 2px solid darkblue;
+    background: #92d050; }
+  header .navigation-1 {
+    margin-right: 10px;
+    border: 2px solid darkblue;
+    background: #92d050; }
+  header .navigation-2 {
+    margin: 0 10px;
+    width: 100%; }
+  header .navigation-1 input {
+    display: none;
+    width: 300px;
+    font-size: 1.2rem; }
+  header .navigation-1 button {
+    font-size: 1.2rem; }
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  width: 100%;
+  margin: 0 auto; }
+  main .start {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 5%;
+    border: 2px solid darkblue;
+    background: cornflowerblue; }
+    main .start .teaser,
+    main .start .ad {
+      box-sizing: border-box;
+      height: 50%;
+      width: auto;
+      border: 2px solid darkblue;
+      background: #92d050; }
+  main hr {
+    margin: 10px 0; }
+  main .thumbnails {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid darkblue;
+    background: cornflowerblue; }
+    main .thumbnails .thumbnail {
+      width: 220px;
+      height: 200px;
+      border: 2px solid darkblue;
+      background: #92d050;
+      margin: 10px; }
+
+main .thumbnails {
+  display: block;
+  width: 100%; }
+  main .thumbnails .thumbnail {
+    width: 99%;
+    margin: 5px 0 0 0; }
+
+.navigation-2 {
+  display: block; }
+
+@media only screen and (min-width: 468px) {
+  header {
+    flex-wrap: nowrap; }
+    header .navigation-1 {
+      text-align: right;
+      width: 75%; }
+      header .navigation-1 input {
+        display: inline-block;
+        width: 80%; }
+    header .navigation-2 {
+      order: -1;
+      width: 15%; }
+  main .start {
+    flex-direction: row;
+    margin-bottom: 20px; }
+    main .start .teaser, main .start .ad {
+      height: 100%;
+      width: 50%; }
+    main .start .teaser {
+      margin-right: 20px; }
+  hr {
+    display: none; }
+  main .thumbnails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%; }
+    main .thumbnails .thumbnail {
+      width: 24%;
+      margin: 5px 0 0 0; } }

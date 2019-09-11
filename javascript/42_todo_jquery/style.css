@@ -1,0 +1,27 @@
+.tablerow {
+    background: lightgray;
+}
+
+h1 {
+    background: yellow;
+    font-size: 4em;
+    height: 50px;
+    line-height: 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+li {
+    background: deepskyblue;
+    color: white;
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+li button {
+    background: red;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    float: right;
+}

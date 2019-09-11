@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    height: 120px;
+    background: cornflowerblue;
+    line-height: 120px;
+    padding-left: 20px;
+}
+
+input, button {
+    font-size: 1.2em;
+}
+
+table button {
+    width: 100%;
+}
+
+.container {
+    padding: 10px;
+}
+
+.users {
+    width: 600px;
+    margin: 10px auto;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    padding: 4px;
+}
+
+thead {
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #bec8ff;
+}
+
+tr:nth-child(odd) {
+    background-color: #d0d7ff;
+}
+

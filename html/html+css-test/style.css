@@ -1,0 +1,173 @@
+/* default style for test */
+
+header {
+    background-color: white;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+main {
+    margin-top: 200px;
+}
+
+main li {
+    text-decoration: line-through;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+#blue {
+    color: blue;
+}
+
+span:nth-child(even) {
+    background: blue;
+}
+
+.background {
+    background-image: url("./images/tree.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 250px;
+    height: 250px;
+    float: left; 
+}
+
+.images::after {
+    clear: both;
+    content: '';
+    display: table;
+}
+
+img[alt="Image 2"] {
+    padding: 5px;
+    border: 2px solid blue;
+}
+
+
+.mediaquery {
+    background-color: blue; 
+    width: 5rem;
+    height: 5rem;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .mediaquery {
+        background-color: yellow; 
+        width: 7rem;
+        height: 7rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+    .mediaquery {
+        background-color: red; 
+        width: 10rem;
+        height: 10rem;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .mediaquery {
+        background-color: purple; 
+        width: 12rem;
+        height: 12rem;
+    }
+}
+
+span {
+    width: 95%;
+   padding: .5rem;
+    border: 1px solid black;
+    margin: .5rem;
+    display: inline-block;
+}
+    
+
+.container {
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    border: 2px solid blue;
+    height: 10rem;
+    width: 10rem;
+    margin: 1rem;  
+    flex-grow: 1;
+}
+
+.mediaquery {
+    border: 2px solid black;
+}
+
+.box {
+    border: 2px solid black;
+    height: 20rem;
+    width: 20rem;
+}
+
+.relative, .absolute {
+    border: 2px solid blue;
+}
+
+.relative {
+    height: 10rem;
+    width: 10rem;
+    position: relative;
+    left: calc(10rem - 4px);
+}
+
+.absolute {
+    height: 5rem;
+    width: 5rem;
+    position: absolute;
+    bottom: 0;
+}
+
+.wrapper {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 3;
+    grid-template-rows: 4;
+    grid-gap: 5px;
+}
+
+.cell {
+    border: 1px solid red;
+}
+
+.two {
+    grid-row: 2/4;
+}
+
+.three {
+    grid-column: 2/4;
+    grid-row: 1/3;
+}
+
+.seven {
+    grid-column: 2/4;
+}
+
+.headline {
+    font-size: 2em;
+    color: pink;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+footer a:hover {
+    color: midnightblue;
+}
+
+footer a:visited {
+    color: violet;
+}

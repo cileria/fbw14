@@ -1,0 +1,96 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  background-color: #b4b4b4;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.container {
+  width: 70%;
+  background-color: #fff;
+  margin: 0 auto; }
+  .container .header {
+    height: 120px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background-image: url(../images/beach.jpg);
+    background-position: center;
+    background-size: 110%; }
+    .container .header ul {
+      margin: 0 10px 10px 0; }
+      .container .header ul li {
+        display: inline-block;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 4px; }
+        .container .header ul li a {
+          color: white; }
+  .container .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; }
+    .container .content a {
+      color: black;
+      text-decoration: none;
+      font-size: 1.3em; }
+    .container .content .item {
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      border: 1px solid black;
+      background-color: #474747;
+      text-align: center;
+      line-height: 200px; }
+    .container .content .item-link {
+      cursor: pointer; }
+      .container .content .item-link:hover {
+        background-color: cornflowerblue; }
+    .container .content .item:nth-child(2) {
+      background-image: url("../images/cycling.jpg");
+      background-size: 100% 100%; }
+      .container .content .item:nth-child(2):hover {
+        box-shadow: 5px 5px 5px grey; }
+    .container .content .item:nth-child(4) {
+      background-image: url("../images/nature.jpg");
+      background-size: 100% 100%; }
+      .container .content .item:nth-child(4):hover {
+        box-shadow: 5px 5px 5px grey; }
+    .container .content .item:nth-child(6) {
+      background-image: url("../images/coding.jpg");
+      background-size: 100% 100%; }
+      .container .content .item:nth-child(6):hover {
+        box-shadow: 5px 5px 5px grey; }
+  .container .about-me {
+    font-size: 18px;
+    padding: 20px;
+    line-height: 1.3; }
+    .container .about-me h2 {
+      margin-top: 20px;
+      margin-bottom: 20px; }
+    .container .about-me img {
+      width: 199px;
+      display: block;
+      float: right; }
+    .container .about-me p {
+      float: left; }
+  .container .hobbies {
+    font-size: 18px;
+    padding: 20px;
+    line-height: 1.3; }
+    .container .hobbies h2 {
+      margin-top: 20px;
+      margin-bottom: 20px; }
+    .container .hobbies img {
+      width: 90%;
+      margin: 10px auto;
+      display: block; }
+    .container .hobbies p {
+      margin-top: 5px; }
+  .container .skills {
+    font-size: 18px;
+    padding: 20px;
+    line-height: 1.3; }
+    .container .skills h2 {
+      margin-top: 20px;
+      margin-bottom: 20px; }

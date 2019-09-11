@@ -1,0 +1,60 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+.header {
+  height: 60px;
+  border: 2px solid darkblue;
+  background: cornflowerblue;
+  display: flex;
+  justify-content: flex-end; }
+  .header .navigation {
+    border: 2px solid darkblue;
+    background: #92d050;
+    text-align: center;
+    width: 120px; }
+
+.main {
+  display: flex;
+  justify-content: center; }
+  .main .search-area {
+    border: 2px solid darkblue;
+    background: #92d050;
+    font-size: 1.2rem;
+    padding: 10px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+    .main .search-area .logo {
+      margin: 0 auto;
+      font-size: 4rem;
+      width: 271px;
+      height: 100px; }
+    .main .search-area .search-box {
+      margin-top: 10px;
+      font-size: 1rem;
+      display: block;
+      width: 100%; }
+    .main .search-area .buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center; }
+      .main .search-area .buttons button {
+        font-size: 1rem;
+        padding: 3px;
+        margin-left: 10px; }
+
+.location {
+  display: none;
+  position: fixed;
+  bottom: 0; }
+
+@media only screen and (max-width: 492px) {
+  .location {
+    display: block; }
+  .search-area {
+    width: 85%;
+    font-size: 6rem; }
+    .search-area .buttons {
+      font-size: 1.5rem; } }
