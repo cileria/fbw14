@@ -1,0 +1,27 @@
+Aufgabe:
+~~~~~~~~
+
+Erstelle eine Funktion numberTable(), die zwei Parameter entgegennimmt:
+rows und columns. (Also Anzahl Zeilen und Spalten)
+
+1. numberTable(rows, columns) soll ein Array mit der Länge von rows zurück-
+   geben. Jedes Element dieses Arrays soll wieder ein eigenes Array mit der Länge
+   columns sein. Jedes Element dieses Arrays soll eine 0 sein.
+
+Beispiel:
+numberTable(3,4) soll folgendes verschachteltes Array zurückgeben:
+
+[ [0,0,0,0], [0,0,0,0], [0,0,0,0] ]
+
+2. Erweitere die Funktion numberTable so, dass anstatt Nullen in jedem 
+   Unter-Array aufsteigende Zahlen sind von 1 bis columns.
+
+Beispiel:
+numberTable(3,4) soll folgendes verschachteltes Array zurückgeben:
+
+[ [1,2,3,4], [1,2,3,4], [1,2,3,4] ]
+
+3. Erweitere die Funktion numberTable nun so, dass es folgendes 
+   verschachteltes Array zurückgibt:
+
+[ [1,2,3,4], [5,6,7,8], [9,10,11,12] ]

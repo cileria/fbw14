@@ -1,0 +1,169 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+}
+
+@mixin blue-element {
+    border: 2px solid darkblue;
+    background: cornflowerblue;
+}
+
+@mixin green-element {
+    border: 2px solid darkblue;
+    background: rgb(146, 208, 80);
+}
+
+.navigation-2 {
+    display: none;
+    @include green-element();
+}
+
+header {
+    height: 50px;
+    @include blue-element();
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        margin-left: 10px;
+        @include green-element();
+    }
+
+    .navigation-1 {
+        margin-right: 10px;
+        @include green-element();
+    }
+
+    .navigation-2 {
+        margin: 0 10px;
+        width: 100%;
+    }
+
+    .navigation-1 {
+        input {
+            display: none;
+            width: 300px;
+            font-size: 1.2rem;
+        }
+
+        button {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    width: 100%;
+    margin: 0 auto;
+
+    .start {
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 5%;
+        @include blue-element();
+
+        .teaser,
+        .ad {
+            box-sizing: border-box;
+            height: 50%;
+            width: auto;
+            @include green-element();
+        }
+    }
+
+    hr {
+        margin: 10px 0;
+    }
+
+    .thumbnails {
+        margin-top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        @include blue-element();
+
+        .thumbnail {
+            width: 220px;
+            height: 200px;
+            @include green-element();
+            margin: 10px;
+        }
+    }
+}
+
+main {
+    .thumbnails {
+        display: block;
+        width: 100%;
+
+        .thumbnail {
+            width: 99%;
+            margin: 5px 0 0 0;
+        }
+    }
+}
+
+.navigation-2 {
+    display: block;
+}
+
+@media only screen and (min-width: 468px) {
+    header {
+        flex-wrap: nowrap;
+
+        .navigation-1 {
+            text-align: right; 
+            width: 75%;
+
+            input {
+                display: inline-block;
+                width: 80%;
+            }
+        }
+
+        .navigation-2 {
+            order: -1;
+            width: 15%;
+        }
+    }
+
+    main .start {
+        flex-direction: row;
+        margin-bottom: 20px;
+
+        .teaser, .ad {
+            height: 100%;
+            width: 50%;
+        }
+
+        .teaser {
+            margin-right: 20px;
+        }
+
+    }
+
+    hr {
+        display: none;
+    }
+
+    main .thumbnails {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+
+        .thumbnail {
+            width: 24%;
+            margin: 5px 0 0 0;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    height: 100%;
+}
+
+div {
+    padding: 3px;
+    height: 100%;
+}
+
+p {
+    margin-top: 10px;
+    background: rgb(30, 30, 30);
+    color: white;
+    padding: 5px;
+}

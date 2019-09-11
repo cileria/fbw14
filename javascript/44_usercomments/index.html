@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="navlink" id="btnShowUsers">Show Users</div>
+        <div class="navlink" id="btnAddUser">Add User</div>
+        <div class="navlink" id="btnShowComments">Show Comments</div>
+        <div class="navlink" id="btnAddComment">Add Comment</div>
+    </div>
+
+    <div class="container" id="container">
+
+    </div>
+
+    <!-- ist unsichtbar beim laden -->
+    <div class="addform" id="adduser">
+        <div>
+            <input type="text" id="name" placeholder="name" />
+            <input type="text" id="username" placeholder="username" />
+            <input type="text" id="email" placeholder="email" />
+            <button id="btnNewUser">
+                Add User
+            </button>
+        </div>
+    </div>
+
+    <!-- ist auch unsichtbar beim laden -->
+    <div class="addform" id="addcomment">
+        <div>
+            <input type="text" id="commentname" placeholder="name" />
+            <input type="text" id="commentemail" placeholder="email" />
+            <textarea id="commenttext" rows="10" placeholder="Kommentar"></textarea>
+            <button id="btnNewComment">
+                Add Comment
+            </button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

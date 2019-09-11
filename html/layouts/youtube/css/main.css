@@ -1,0 +1,73 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  width: 100%; }
+
+.navigation-2 {
+  display: none;
+  border: 2px solid darkblue;
+  background: #92d050; }
+
+.header {
+  height: 40px;
+  border: 2px solid darkblue;
+  background: cornflowerblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .header .logo {
+    margin-left: 10px;
+    border: 2px solid darkblue;
+    background: #92d050; }
+  .header .navigation-1 {
+    margin-right: 10px;
+    border: 2px solid darkblue;
+    background: #92d050; }
+  .header .searchbox input {
+    width: 300px;
+    font-size: 1.2rem; }
+  .header .searchbox button {
+    font-size: 1.2rem; }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 90%;
+  margin: 0 auto; }
+  .main .start {
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid darkblue;
+    background: cornflowerblue; }
+    .main .start .teaser, .main .start .ad {
+      width: 50%;
+      border: 2px solid darkblue;
+      background: #92d050; }
+  .main .thumbnails {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid darkblue;
+    background: cornflowerblue; }
+    .main .thumbnails .thumbnail {
+      width: 220px;
+      height: 200px;
+      border: 2px solid darkblue;
+      background: #92d050;
+      margin: 10px; }
+
+@media only screen and (max-width: 468px) {
+  .main .thumbnails {
+    display: block;
+    width: 100%; }
+    .main .thumbnails .thumbnail {
+      width: 99%;
+      margin: 5px 0 0 0; }
+  .header .searchbox {
+    display: none; }
+  .navigation-2 {
+    display: block; } }

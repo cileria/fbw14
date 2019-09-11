@@ -1,0 +1,26 @@
+.jumbotron {
+    margin: 0;
+}
+
+.navbar {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.507);
+    display: flex;
+    justify-content: center;
+}
+
+.card-deck {
+    margin: 0;
+}
+
+.cards {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+footer {
+    height: 70px;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}

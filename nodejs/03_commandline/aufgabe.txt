@@ -1,0 +1,19 @@
+|~~~~~~~~
+|Aufgabe:
+|~~~~~~~~
+
+Schreibe ein NodeJS-Programm filereader.js welches alle Dateien, 
+die als Argument übergeben worden öffnet und den Inhalt ausgibt.
+Öffne die Dateien synchron nacheinander und gib den Inhalt mit
+console.log aus.
+
+Z.B. 
+
+$ ./filereader.js ./datei1.txt ./datei2.txt /home/jan/Desktop/blabla.txt
+
+würde die 3 Dateien ./datei1.txt, ./datei2.txt und 
+/home/jan/Desktop/blabla.txt öffnen. 
+
+PS: Schreibe einen Klon für 
+
+$ cat ./datei1.txt ./datei2.txt /home/jan/Desktop/blabla.txt

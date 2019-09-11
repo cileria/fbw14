@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shop</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo" id="logo">Mini-Shop</div>
+            <div class="navigation">
+                <div class="navi-categories">
+                    <a onClick="showStartpage()" href="#">All</a> |
+                    <a onClick="loadProducts('Books')" href="#">Books</a> |
+                    <a onClick="loadProducts('Movies')" href="#">Movies</a> |
+                    <a onClick="loadProducts('Music')" href="#">Music</a>
+                </div>
+                <div class="navi-right">
+                    <a onClick="showCart()" href="#">Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+
+            <div class="thumbnail-container" id="thumbnail-container">
+                
+            </div>
+
+            <div class="product-details" id="product-details">
+
+                <div class="product-container">
+                    <div class="product-image">
+                        <img id="product-detail-image" src="images/goodfellas.jpg" alt="">
+                    </div>
+
+                    <div class="product-description">
+                        <h2 id="product-details-title">Good Fellas</h2>
+                        <p id="product-detail-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit suscipit at dolorem vel quod
+                            architecto maiores debitis! Quae, sit, iste ab nisi distinctio neque tempore ad praesentium
+                            nam vitae temporibus nulla? Corrupti, sunt. Exercitationem ab distinctio autem provident!
+                            Necessitatibus, iure!
+                        </p>
+
+                        <div class="product-buy">
+                            <div>Quantity: <input id="product-detail-quantity" type="number" min="1" max="9" class="quantity" value="1" /> x
+                                <span id="product-detail-price">19,99€</span> = <span id="product-detail-total-price">19,99€</span>
+                                <div><button id="put-item-cart">In den Warenkorb legen</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart" id="cart">
+            </div>
+
+            <div class="thankyou" id="thankyou">
+                <div><h2>Thank you for your purchase!</h2></div>
+            </div>
+
+        </div>
+        <script src="js/main.js"></script>
+</body>
+
+</html>

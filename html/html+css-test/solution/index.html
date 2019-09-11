@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>Test!</title>
+
+    <style>
+
+        /* default style for test */
+
+        header {
+            background-color: white;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        span {
+            width: 95%;
+           padding: .5rem;
+            border: 1px solid black;
+            margin: .5rem;
+            display: inline-block;
+        }
+              
+        .container {
+            border: 2px solid black;
+        }
+
+        .item {
+            border: 2px solid blue;
+            height: 10rem;
+            width: 10rem;
+            margin: 1rem;  
+        }
+
+        .mediaquery {
+            border: 2px solid black;
+        }
+
+        .box {
+            border: 2px solid black;
+            height: 20rem;
+            width: 20rem;
+        }
+        
+        .relative, .absolute {
+            border: 2px solid blue;
+        }
+
+        .relative {
+            height: 10rem;
+            width: 10rem;
+        }
+
+        .absolute {
+            height: 5rem;
+            width: 5rem;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Test!</h1>
+        <h2>Try to finish the exercises to the best of your abilities - read the tasks and instructions carefully</h2>
+        <h3>You CAN use google, but you cannot ask teachers or other classmates for help</h3>
+    </header>
+
+    <main>
+        <h3>Tasks</h3>
+        <ol>
+            <li>Make and link a CSS stylesheet and work from there.</li>
+            <li>Align the text in the header to the center of the page.</li>
+            <li>Change the color of THIS list item to blue.</li>
+            <li>Images Task</li>
+                <ul>
+                    <li>Find the images section in the HTML file.</li>
+                    <li>Find the div with the class of "background" and select it by its class name in CSS.</li>
+                    <li>Give the div with the class of "background" a width and height.</li>
+                    <li>Give the div with the class of "background" a background image using the image "tree.jpg". The image can be found in the "images" folder</li>
+                    <li>Set the background image to cover the div.</li>
+                    <li>Make sure the background image does not repeat itself</li>
+                    <li>Position the background image at the center of the div.</li>
+                </ul>
+            <li>Make all of the images in the "images section" appear side-by-side.</li>
+            <li>Select the second image (mountain image) by its alt attribute value. Give the image padding and a solid blue border.</li>
+            <li>Find the div with 10 span elements nested inside. Change the background color of every even span element using nth-child().</li>
+            <li>Media Query Task</li>
+                <ul>
+                    <li>Go to the section titled "Media Queries". Change the background color and size of the the box with the class of "mediaquery". It is in the section titled "media query".</li>
+                    <li>Mobile background color: blue, size: 5rem x 5rem</li>
+                    <li>Tablet background color: yellow, size: 7rem x 7rem - BREAKPOINT: 768px.</li>
+                    <li>Desktop background color: red, size: 10rem x 10rem - BREAKPOINT: 1024px.</li>
+                    <li>Large Desktop background color: purple, size: 12rem x 12rem BREAKPOINT: 1440px</li>
+                </ul>
+
+                <li>Positioning Task</li>
+                <ul>
+                    <li>Go to the section titled "Positioning"</li>
+                    <li>Give the div with the class "relative" a relative position. Position this div on the top-right hand side of its parent element (the box)</li>
+                    <li>Give the div with class "absolute" an absolute position. Position this div on the bottom-left hand side of its parent element (the relative container).</li>
+                    <li>Make the header element fixed to the top of the page.</li>
+                </ul>
+
+                <li>If the header element hides part of the task section, add margins where needed.</li>
+    
+            <li>Flexbox Task </li>
+                <ul>
+                    <li>Go to the section titled "Flexbox"</li>
+                    <li>Align the "items" in the "container" in a row. </li>
+                    <li>Make the items take up multiple rows.</li>
+                    <li>Center the rows in the container.</li>
+                    <li>Make the items take up all available space on the last row.</li>
+                </ul>  
+        
+            <li>Grid Layout Task</li>
+                <ul>
+                    <li>Go to the section titled "Grid Layout"</li>
+                    <li>Make the div with the class "wrapper" a grid</li>
+                    <li>Give it three columns and four rows of equal size.</li> 
+                    <li>Give the wrapper a border</li>
+                    <li>Give the grid a grid gap of 5px</li>
+                    <li>Give all cells a border.</li>
+                    <li>Make the second cell twice as high as the rest of the cells spanning row lines 2 - 4.</li>
+                    <li>Make the third cell twice as wide and twice as high as the the rest of the cells spanning column lines 2 - 4 and rows lines 1 - 3</li>
+                    <li>Make the seventh cell twice as wide as the rest of the cells spanning column lines 2 - 4</li>
+                </ul>
+
+            <li>Give three h3 elements a class, change the font color, font size and font family of the class.</li>
+            <li>Select all the anchor links in the footer. Select them as DESCENDANTS of the footer. Change the color of the footer links on :visited and :hover.</li>
+            <li>When you have finished all the tasks, strike out ALL the TASK list items.</li>
+        </ol>
+
+    </main>
+
+    <!-- Images Section -->
+    <section class="images">
+        <h3>Images Section</h3>        
+        <div class="background"></div>
+        <img height="200" src="images/mountain.jpg" alt="Image 2">
+        <img height="200" src="images/surfer.jpg" alt="Image 3">
+    </section>
+
+<!-- Span -->
+<h3>nth-child()</h3>
+<div>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>6</span>
+    <span>7</span>
+    <span>8</span>
+    <span>9</span>
+    <span>10</span>
+</div>
+
+<!-- Media Queries -->
+<h3>Media Queries</h3>
+<div class="mediaquery">Media Queries Section</div>
+
+<!-- Positioning -->
+<h3>Positioning</h3>
+<div class="box">
+<div class="relative">Relative
+    <div class="absolute">Absolute</div>
+</div>
+</div>
+
+<!-- Flexbox -->
+<h3>Flexbox</h3>
+<div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+    <div class="item">10</div>
+</div>
+
+
+<!-- Grid -->
+<h3>Grid Layout</h3>
+<div class="wrapper">
+    <div class="cell one">1</div>
+    <div class="cell two">2</div>
+    <div class="cell three">3</div>
+    <div class="cell four">4</div>
+    <div class="cell five">5</div>
+    <div class="cell six">6</div>
+    <div class="cell seven">7</div>
+</div>
+
+
+
+<!-- Descendants -->
+<h3>Footer Links</h3>
+<footer>
+    <ul>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+    </ul>
+</footer>
+
+</body>
+</html>

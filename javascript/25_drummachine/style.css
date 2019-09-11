@@ -1,0 +1,34 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content {
+    padding: 6px;
+}
+
+.instruments {
+    display: flex;
+    margin: 0 auto;
+    width: 610px;
+    flex-wrap: wrap;
+}
+
+.bouncepad {
+    width: 200px;
+    height: 180px;
+    background: rgba(0, 0, 200, 0.527);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+}
+
+.bouncepad:nth-child(even) {
+    background: rgba(0, 0, 77, 0.603);
+}
+

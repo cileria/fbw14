@@ -1,0 +1,18 @@
+<Users>
+    <User>
+        <Id>1</Id>
+        <Name>Bob</Name>
+    </User>
+    <User>
+        <Id>2</Id>
+        <Name>Tom</Name>
+    </User>
+    <User>
+        <Id>3</Id>
+        <Name>Maria</Name>
+    </User>
+    <User>
+        <Id>4</Id>
+        <Name>Julia</Name>
+    </User>            
+</Users>
