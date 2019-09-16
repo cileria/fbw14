@@ -8,7 +8,7 @@ for(item of items) {
 console.log(`der Ordner hat ${items.length} direkte files`);
 
 let path1 = '/home/janteach/Desktop/test/a'; // Datei
-let path2 = '/home/janteach/Desktop/test/hallo'; // Verzeichnis
+let path2 = '/home/nteach/Desktop/test/hallo'; // Verzeichnis
 
 const infoPath1 = fs.lstatSync(path1);
 const infoPath2 = fs.lstatSync(path2);
