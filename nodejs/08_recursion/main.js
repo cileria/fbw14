@@ -54,4 +54,77 @@ const listFiles = path => {
     }
 }
 
-listFiles(`/home/janteach/Desktop`);
+// listFiles(`/home/janteach/Desktop/test/hallo`);
+
+const listFilesRecursive = path => {
+    let files = fs.readdirSync(path);
+    // file kann sein datei, verzeichnis oder link
+    for(file of files) {
+        const info = fs.lstatSync(`${path}/${file}`);
+        if(info.isFile()) {
+            // rekursionsende 1
+            console.log(`${path}/${file} ist eine Datei`);
+        }
+        else if(info.isDirectory()) {
+            console.log(`${path}/${file} ist ein Verzeichnis`);
+            listFilesRecursive(`${path}/${file}`);
+        }        
+        else if(info.isSymbolicLink()) {
+            // rekursionsende 2
+            console.log(`${path}/${file} ist ein Link`);
+        }
+    }
+}
+
+listFilesRecursive('/home/janteach/Desktop/test');
+
+// Aufgabe:
+// 
+// Erstelle eine Funktion findFile die zwei Parameter
+// path und filename erwartet. Path soll ein Verzeichnis-Pfad sein.
+// Falls path kein Verzeichnis ist, dann soll  findFile
+// null zurückgeben.
+// Ansonsten, soll findFile alle Pfade zurückgeben, in 
+// denen die Datei filename zu finden ist.
+// filename kann auch ähnlich der zu suchenden Datei sein.
+// D.h. falls filename z.B. "all" ist, dann soll
+// die Datei "hallo.txt" auch aufgelistet werden, weil "all"
+// auch Teilstring von "hallo.txt" ist. Also alle Dateien sollen gefunden
+// werden, bei denen filename ein Substring des Dateinamens ist.
+
+const findFile = (path, name) => {
+    const info = fs.lstatSync(path);
+    if(!info.isDirectory) return null;
+
+    let files = fs.readdirSync(path);
+    for(file of files) {
+        if(fs.lstatSync(`${path}/${file}`).isFile()) {
+            if(file.search(name) !== -1) {
+                console.log(`match: ${path}/${file}`);
+            }
+        }
+        else if(fs.lstatSync(`${path}/${file}`).isDirectory()) {
+            findFile(`${path}/${file}`, name);
+        }
+    }
+}
+
+findFile('/home/janteach/Desktop/test', 'beach');
+
+// Aufgabe:
+// 
+// 1) Erstelle eine Funktion findInFiles mit zwei Parametern
+//    path und strSearch. Diese Funktion durchsucht rekursiv
+//    das Verzeichnis und alle Unterverzeichnisse nach Dateien
+//    und schaut sich jede Datei genau an. Dabei wird untersucht
+//    ob in der Datei strSearch zu finden ist. Falls ja, 
+//    wird der Pfad der Datei ausgegeben.
+// 2) Erstelle eine Funktion (basierend auf findInFiles) namens
+//    replaceInFiles mit drei Parametern path, strSearch und strReplace.
+//    Die Funktionalität von 1) soll erweitert werden dadurch, dass
+//    in der Datei mit dem gefundenen String der String mit strReplace
+//    erstetzt wird und danach die Datei abgespeichert wird. Optional: speichere eine Kopier der Datei ${filename}.bak, hallo.txt -> hallo.txt.bak
+// 3) Erstelle aus 1 und 2 jeweils ein ausführbares Skript namens
+//    1) findInFiles.js
+//    2) replaceInFiles.js
+// 4) Verlinke 3.1) in /usr/local/bin/findInFiles bzw. /usr/local/bin/replaceInFiles
