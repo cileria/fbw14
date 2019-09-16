@@ -30,7 +30,7 @@ const sum = x => {
         return 0;
     }
     else {
-        console.log('rekursionsende erreicht, x ist 0');
+        console.log('rekursionsende ist nicht erreicht, x ist noch nicht 0');
         return x + sum(x - 1);
     }
 }
