@@ -23,11 +23,44 @@ const products = [
 
 // Aufgabe:
 //
-// 1) Erstelle eine neue Route /productdetail, die ein Parameter
+// 1) Erstelle eine neue Route /products, die alle Produkte
+//    als HTML-Tabelle ausgibt.
+app.get('/products', (req, res) => {
+    let strProducts = '';
+    for(let i=0; i<products.length;i++) {
+        strProducts += `
+            <tr>
+                <td>${products[i].id}</td>
+                <td>${products[i].name}</td>
+                <td>${products[i].price}</td>
+            </tr>
+        `;
+    }
+    return res.send(
+        `
+            <table>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Price</td>
+                </tr>
+                ${strProducts}        
+            </table>
+        `
+    );
+});
+
+// 2) Erstelle eine neue Route /productdetail, die ein Parameter
 //    id erwartet. Auf Basis der id, wird dem Besucher der Webseite
 //    alles zum Produkt ausgegeben als String.
-// 2) Erstelle eine neue Route /products, die alle Produkte
-//    als HTML-Tabelle ausgibt.
 
+app.get('/productdetail/:id', (req, res) => {
+    for(product of products) {
+        if(product.id == req.params.id) {
+            return res.send(`${product.id}, ${product.name}, ${product.price}`);
+        }
+    }
+    return res.send('Product ID not found!');
+});
 
 app.listen(3000);
