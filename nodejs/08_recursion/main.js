@@ -76,7 +76,7 @@ const listFilesRecursive = path => {
     }
 }
 
-listFilesRecursive('/home/janteach/Desktop/test');
+// listFilesRecursive('/home/janteach/Desktop/test');
 
 // Aufgabe:
 // 
@@ -109,7 +109,7 @@ const findFile = (path, name) => {
     }
 }
 
-findFile('/home/janteach/Desktop/test', 'beach');
+// findFile('/home/janteach/Desktop/test', 'beach');
 
 // Aufgabe:
 // 
@@ -119,11 +119,74 @@ findFile('/home/janteach/Desktop/test', 'beach');
 //    und schaut sich jede Datei genau an. Dabei wird untersucht
 //    ob in der Datei strSearch zu finden ist. Falls ja, 
 //    wird der Pfad der Datei ausgegeben.
+
+// const findInFiles = (path, strSearch) => {
+//     let files = fs.readdirSync(path);
+//     for(file of files) {
+//         // file kann sein datei, verzeichnis oder link
+//         // wir schauen uns die dateien an
+//         const info = fs.lstatSync(`${path}/${file}`);
+//         if(info.isFile()) {
+//             // rekursionsende 1
+//             // hier gucken wir nach, ob in der datei ein
+//             // string zu finden ist nach dem muster strSearch
+//             // wir öffnen die datei und schauen nach.
+//             const fileContent = fs.readFileSync(`${path}/${file}`);
+//             // let str = new String(fileContent);
+//             // if(str.includes(strSearch)) { ... }
+//             if(new String(fileContent).includes(strSearch)) {
+//                 console.log(`MATCH: ${path}/${file}`);
+//             }   
+//         }
+//         else if(info.isDirectory()) {
+//             findInFiles(`${path}/${file}`, strSearch);
+//         }        
+//     }
+// }
+
+// findInFiles('/home/janteach/Desktop', 'Haus');
+
 // 2) Erstelle eine Funktion (basierend auf findInFiles) namens
 //    replaceInFiles mit drei Parametern path, strSearch und strReplace.
 //    Die Funktionalität von 1) soll erweitert werden dadurch, dass
 //    in der Datei mit dem gefundenen String der String mit strReplace
 //    erstetzt wird und danach die Datei abgespeichert wird. Optional: speichere eine Kopier der Datei ${filename}.bak, hallo.txt -> hallo.txt.bak
+
+
+
+const findInFiles = (path, strSearch, replace) => {
+    let files = fs.readdirSync(path);
+    for(file of files) {
+        // file kann sein datei, verzeichnis oder link
+        // wir schauen uns die dateien an
+        const info = fs.lstatSync(`${path}/${file}`);
+        if(info.isFile()) {
+            // rekursionsende 1
+            // hier gucken wir nach, ob in der datei ein
+            // string zu finden ist nach dem muster strSearch
+            // wir öffnen die datei und schauen nach.
+            const fileContent = fs.readFileSync(`${path}/${file}`);
+            // let str = new String(fileContent);
+            // if(str.includes(strSearch)) { ... }
+            if(new String(fileContent).includes(strSearch)) {
+                console.log(`MATCH: ${path}/${file}`);
+
+                // falls wir einen replace definiert haben, dann replacen wir das
+                if(typeof replace !== 'undefined') {
+                    const newFileContent = new String(fileContent).replace(new RegExp(strSearch, 'g'), replace);
+                    
+                    fs.writeFileSync(`${path}/${file}`, newFileContent);
+                }
+            }
+        }
+        else if(info.isDirectory()) {
+            findInFiles(`${path}/${file}`, strSearch, replace);
+        }        
+    }
+}
+
+findInFiles('/home/janteach/Desktop/test', 'Haus', 'REPLACED');
+
 // 3) Erstelle aus 1 und 2 jeweils ein ausführbares Skript namens
 //    1) findInFiles.js
 //    2) replaceInFiles.js
