@@ -39,11 +39,12 @@ const findInFiles = (path, strSearch, replace) => {
 
 if(process.argv.length < 4) {
     console.log('Error: Destination folder and searchString required.');
-    process.exit(0);
+    // process.exit(0);
+    return;
 }
 
 const destinationPath = process.argv[2];
 const searchString = process.argv[3];
-const replaceString = process.argv.length === 5 ? argv[4] : undefined;
+const replaceString = process.argv.length === 5 ? process.argv[4] : undefined;
 
 findInFiles(destinationPath, searchString, replaceString);
