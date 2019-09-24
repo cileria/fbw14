@@ -21,8 +21,10 @@ app.get('/users', (req, res) => {
     });
 });
 
-
-app.get('/users_synchron', (req, res) => {
+// demonstration: langes laden synchron 
+// effekt: blockiert den server, nutzer 2 
+// muss auf nutzer 1 warten
+app.get('/longload_synchron', (req, res) => {
     let stop = new Date().getTime();
     while(new Date().getTime() < stop + 10000) {
         ;
@@ -31,11 +33,28 @@ app.get('/users_synchron', (req, res) => {
     return res.send('daten geladen');
 });
 
-app.get('/users_asynchron', (req, res) => {
+// demonstration: langes laden asynchron 
+// effekt: blockiert den server NICHT, nutzer 2 
+// muss NICHT auf nutzer 1 warten
+app.get('/longload_asynchron', (req, res) => {
     setTimeout(
         () => { res.send('daten geladen') },
         10000
     )
+});
+
+app.get('/users_delay', (req, res) => {
+    setTimeout(
+        () => {
+            fs.readFile('./users.json', 'utf-8',
+            (error, data) => {
+                if(error) return res.send({ error: error });
+                
+                return res.send(data);
+            });            
+        },
+        10000
+    );
 });
 
 // app.get('/', (req, res) => {
