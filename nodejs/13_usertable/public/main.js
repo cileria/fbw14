@@ -1,6 +1,18 @@
+// Aufgabe:
+//
+// Gib dem User Feedback, dass die Daten 
+// noch geladen werden. Zeige, solange die Daten
+// geladen werden, einen Lade-Spinner.
+// Schaue mal auf https://loading.io/
+
 // async/await-Syntax
 const loadUsers = async() => {
-    const result = await fetch('http://localhost:3000/users');
+    
+    const contentObj = document.getElementById('content');
+    const loadingSpinner = '<img src="loading.gif">';
+    contentObj.innerHTML = loadingSpinner;
+
+    const result = await fetch('http://localhost:3000/users_delay');
     const data = await result.json();
 
     console.log(data);
@@ -28,7 +40,6 @@ const loadUsers = async() => {
     }
     table += `</table>`; 
 
-    const contentObj = document.getElementById('content');
     contentObj.innerHTML = table;
 }
 

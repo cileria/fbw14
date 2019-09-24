@@ -5,7 +5,7 @@
 
 body {
     height: 100vh;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(255, 255, 255);
     overflow-y: hidden;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -24,8 +24,13 @@ a {
 }
 
 .container {
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(255, 255, 255);
     height: 50%;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
 }
 
 table {
