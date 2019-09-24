@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const fs = require('fs');
 
 // alle dateien, die im public drin sind,
 // können von außen über den dateinamen geladen werden
@@ -8,16 +9,33 @@ const app = express();
 // /style.css -> lädt die datei style.css
 app.use('/', express.static('public'));
 
-const users = [
-    { id: 1, name: 'Stefan', email: 'stefan@abc.net' },
-    { id: 2, name: 'Lara', email: 'lara@gmx.net' },
-    { id: 3, name: 'Julia', email: 'julia@gmail.com' },
-    { id: 4, name: 'Karsten', email: 'karsten@foo.net' },
-    { id: 5, name: 'Peter', email: 'peter@xing.net' },
-];
-
 app.get('/users', (req, res) => {
-    return res.send(users);
+    fs.readFile('./users.json', 'utf-8',
+    // wenn das laden der datei fertig ist,
+    // wird die folgende callback-funktion aus-
+    // geführt
+    (error, data) => {
+        if(error) return res.send({ error: error });
+        
+        return res.send(data);
+    });
+});
+
+
+app.get('/users_synchron', (req, res) => {
+    let stop = new Date().getTime();
+    while(new Date().getTime() < stop + 10000) {
+        ;
+    }
+
+    return res.send('daten geladen');
+});
+
+app.get('/users_asynchron', (req, res) => {
+    setTimeout(
+        () => { res.send('daten geladen') },
+        10000
+    )
 });
 
 // app.get('/', (req, res) => {
