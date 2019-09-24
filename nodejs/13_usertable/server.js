@@ -14,7 +14,7 @@ const users = [
     { id: 3, name: 'Julia', email: 'julia@gmail.com' },
     { id: 4, name: 'Karsten', email: 'karsten@foo.net' },
     { id: 5, name: 'Peter', email: 'peter@xing.net' },
-]
+];
 
 app.get('/users', (req, res) => {
     return res.send(users);
