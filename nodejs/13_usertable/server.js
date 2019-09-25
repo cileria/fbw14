@@ -17,8 +17,43 @@ app.get('/users', (req, res) => {
     (error, data) => {
         if(error) return res.send({ error: error });
         
-        return res.send(data);
+        // nur die zusammengefassten Daten herausgeben
+        const usersAll = JSON.parse(data);
+        const usersSummary = [];
+
+        for(user of usersAll) {
+            usersSummary.push({
+                id: user.id,
+                name: user.name,
+                email: user.email
+            });
+        }
+
+        return res.send(usersSummary);
     });
+});
+
+app.get('/userdetail/:id', (req, res) => {
+    fs.readFile('./users.json', 'utf-8',
+    (error, data) => {
+        if(error) return res.send({ error: error });
+
+        const usersAll = JSON.parse( data );
+        const id = req.params.id; // id auslesen aus dem request
+
+        for(user of usersAll) {
+            // falls ein nutzer mit der id == id existiert,
+            // gib diesen zurück!
+            if(user.id == id) {
+                // wir returnieren hier schon, weil wir unseren
+                // nutzer haben
+                return res.send(user);
+            }
+        }
+
+        // falls id nicht gefunden wurde, landen wir hier
+        return res.send({ error: 'user with that id not found' });
+    });    
 });
 
 // demonstration: langes laden synchron 
@@ -64,3 +99,25 @@ app.get('/users_delay', (req, res) => {
 
 console.log('Hallo World from Backend.');
 app.listen(3000);
+
+// Aufgabe 1:
+//
+// Erweitere die users.json und erstelle für
+// jeden User zwei weitere Felder "description"
+// und "profilePic". 
+//
+// 1) Für "description": schreibe 2 lustige Sätze
+//    über diesen User.
+// 2) Für profilePic: Lade ein Profilbild von irgendeinem 
+//    Menschen aus dem Internet und speichere es in deinem 
+//    Public-Ordner. Gib profilePic den Namen der Datei. 
+
+// Aufgabe 2:
+//
+// 1) In deinem Backend, erstelle eine Ressource 
+//    /userdetail/:id, die einen Parameter id erwartet.
+// 2) /userdetail soll den Nutzer aus users.json laden, mit
+//    der Id = id und ALLE Information zu diesem Nutzer 
+//    als JSON zurückgeben. Falls die Id nicht gefunden 
+//    wurde, dann gib folgendes JSON zurück 
+//    { error: 'user with that id not found' }

@@ -9,10 +9,10 @@
 const loadUsers = async() => {
     
     const contentObj = document.getElementById('content');
-    const loadingSpinner = '<img src="loading.gif">';
+    const loadingSpinner = '<img class="spinner" src="loading.gif">';
     contentObj.innerHTML = loadingSpinner;
 
-    const result = await fetch('http://localhost:3000/users_delay');
+    const result = await fetch('http://localhost:3000/users');
     const data = await result.json();
 
     console.log(data);
@@ -21,7 +21,7 @@ const loadUsers = async() => {
     // Basierend auf diesen Daten,
     // baue die Tabelle auf.
     let table = `
-        <table>
+        <table class="allusers">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -43,4 +43,4 @@ const loadUsers = async() => {
     contentObj.innerHTML = table;
 }
 
-loadUsers();
+// loadUsers();
