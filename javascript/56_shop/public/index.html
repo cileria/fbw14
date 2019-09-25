@@ -16,9 +16,9 @@
             <div class="navigation">
                 <div class="navi-categories">
                     <a onClick="showStartpage()" href="#">All</a> |
-                    <a href="#">Books</a> |
-                    <a href="#">Movies</a> |
-                    <a href="#">Music</a>
+                    <a onClick="loadProducts('Books')" href="#">Books</a> |
+                    <a onClick="loadProducts('Movies')" href="#">Movies</a> |
+                    <a onClick="loadProducts('Music')" href="#">Music</a>
                 </div>
                 <div class="navi-right">
                     <a onClick="showCart()" href="#">Cart</a>
@@ -29,54 +29,19 @@
         <div class="main">
 
             <div class="thumbnail-container" id="thumbnail-container">
-                <div class="thumbnail">
-                    <div class="thumbnail-name">Beethoven</div>
-                    <div class="thumbnail-price">100 €</div>
-                </div>
-                <div class="thumbnail">
-                    <div class="thumbnail-name">Beethoven</div>
-                    <div class="thumbnail-price">100 €</div>
-                </div>
-                <div class="thumbnail">
-                    <div class="thumbnail-name">Beethoven</div>
-                    <div class="thumbnail-price">100 €</div>
-                </div>
-                <div class="thumbnail">
-                    <div class="thumbnail-name">Beethoven</div>
-                    <div class="thumbnail-price">100 €</div>
-                </div>
-                <div class="thumbnail">
-                    <div class="thumbnail-name">Beethoven</div>
-                    <div class="thumbnail-price">100 €</div>
-                </div>
-                <div class="thumbnail">
-                    <div class="thumbnail-name">Beethoven</div>
-                    <div class="thumbnail-price">100 €</div>
-                </div>
-                <div class="thumbnail">
-                    <div class="thumbnail-name">Beethoven</div>
-                    <div class="thumbnail-price">100 €</div>
-                </div>
-                <div class="thumbnail">
-                    <div class="thumbnail-name">Beethoven</div>
-                    <div class="thumbnail-price">100 €</div>
-                </div>
-                <div class="thumbnail">
-                    <div class="thumbnail-name">Beethoven</div>
-                    <div class="thumbnail-price">100 €</div>
-                </div>
+                
             </div>
 
             <div class="product-details" id="product-details">
 
                 <div class="product-container">
                     <div class="product-image">
-                        <img src="images/goodfellas.jpg" alt="">
+                        <img id="product-detail-image" src="images/goodfellas.jpg" alt="">
                     </div>
 
                     <div class="product-description">
-                        <h2>Good Fellas</h2>
-                        <p>
+                        <h2 id="product-details-title">Good Fellas</h2>
+                        <p id="product-detail-description">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit suscipit at dolorem vel quod
                             architecto maiores debitis! Quae, sit, iste ab nisi distinctio neque tempore ad praesentium
                             nam vitae temporibus nulla? Corrupti, sunt. Exercitationem ab distinctio autem provident!
@@ -84,8 +49,8 @@
                         </p>
 
                         <div class="product-buy">
-                            <div>Quantity: <input type="number" min="1" max="9" class="quantity" value="1" /> x
-                                <span>19,99€</span> = <span>19,99€</span>
+                            <div>Quantity: <input id="product-detail-quantity" type="number" min="1" max="9" class="quantity" value="1" /> x
+                                <span id="product-detail-price">19,99€</span> = <span id="product-detail-total-price">19,99€</span>
                                 <div><button id="put-item-cart">In den Warenkorb legen</button></div>
                             </div>
                         </div>
@@ -94,37 +59,6 @@
             </div>
 
             <div class="cart" id="cart">
-                <div class="cart-item">
-                    <div class="cart-thumbnail">
-                        <img src="images/goodfellas.jpg" alt="" class="cart-picture">
-                    </div>
-                    <div class="cart-description">
-                        <div>
-                            <span class="cart-quantity">2</span> x
-                            <span class="cart-productname">Good Fellas</span>
-                            <span class="cart-amount">39,98€</span>
-                            <button class="remove-cart-item">Remove</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="cart-item">
-                    <div class="cart-thumbnail">
-                        <img src="images/goodfellas.jpg" alt="" class="cart-picture">
-                    </div>
-                    <div class="cart-description">
-                        <div>
-                            <span class="cart-quantity">2</span> x
-                            <span class="cart-productname">Good Fellas</span>
-                            <span class="cart-amount">39,98€</span>
-                            <button   class="remove-cart-item">Remove</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cart-buy">
-                    Total Amount: <span class="cart-totalamount">80,00</span> € <button id="cart-buy-button"  class="cart-buy-button">Buy Now</button>
-                </div>
-
             </div>
 
             <div class="thankyou" id="thankyou">

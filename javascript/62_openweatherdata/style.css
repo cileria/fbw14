@@ -1,0 +1,14 @@
+* {
+    font-size: xx-large;
+    text-align: center;
+}
+:focus {
+    background: yellow;
+}
+input {
+    height: 50px;
+}
+div {
+    border: 1px solid black;
+    width: 300px;
+}

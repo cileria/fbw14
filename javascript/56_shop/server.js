@@ -3,11 +3,13 @@ const randomstring = require('randomstring');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 const app = express();
 
 // default options
 app.use('/', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', function(req, res) {
     return res.send({ minishop: '1.0' });
