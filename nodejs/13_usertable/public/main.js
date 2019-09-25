@@ -7,12 +7,12 @@
 const contentObj = document.getElementById('content');
 
 // async/await-Syntax
-const loadUsers = async() => {
+const loadUsers = async(search) => {
     
     const loadingSpinner = '<img class="spinner" src="loading.gif">';
     contentObj.innerHTML = loadingSpinner;
 
-    const result = await fetch('http://localhost:3000/users');
+    const result = await fetch('http://localhost:3000/users' + (search ? '?q=' + search : ''));
     const data = await result.json();
 
     console.log(data);
@@ -45,8 +45,6 @@ const loadUsers = async() => {
 
 loadUsers();
 
-
-
 const showUser = async (id) => {
     
     const result = await fetch(`http://localhost:3000/userdetail/${id}`);
@@ -77,4 +75,29 @@ const showUser = async (id) => {
     </div>`;
 
     contentObj.innerHTML = profile;
+}
+
+const showSearch = () => {
+    const search = `
+        <div class="search">
+            <div>
+                <input id="searchbox" type="text" placeholder="Suchbegriff eingeben..." />
+            </div>
+            <div>
+                <button onClick="search()">Suchen</button>
+            </div>
+        </div>`;
+
+    contentObj.innerHTML = search;   
+}
+
+const search = () => {
+    const searchboxObj = document.getElementById('searchbox');
+
+    if(searchboxObj.value.length === 0) {
+        alert('Sie müssen etwas eingeben!');
+        return;
+    }
+
+    loadUsers(searchboxObj.value);
 }

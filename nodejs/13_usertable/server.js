@@ -21,14 +21,37 @@ app.get('/users', (req, res) => {
         const usersAll = JSON.parse(data);
         const usersSummary = [];
 
-        for(user of usersAll) {
-            usersSummary.push({
-                id: user.id,
-                name: user.name,
-                email: user.email
-            });
+        // es wird etwas gesucht -> nur die matches zurückgeben
+        if(req.query.q) {
+            const q = (req.query.q).toLowerCase();
+            for(user of usersAll) {
+                if( 
+                    (new String(user.name).toLowerCase().includes(q))
+                    ||
+                    (new String(user.email).toLowerCase().includes(q))
+                    ||                  
+                    (new String(user.description).toLowerCase().includes(q))
+                ) {
+                    usersSummary.push({
+                        id: user.id,
+                        name: user.name,
+                        email: user.email
+                    });                    
+                }   
+            }
+        }
+        // es wird nichts gesucht -> alle nutzer zurückgeben
+        else {
+            for(user of usersAll) {
+                usersSummary.push({
+                    id: user.id,
+                    name: user.name,
+                    email: user.email
+                });
+            }
         }
 
+        // usersSummary hat entweder alle nutzer oder nur die gematchten nutzer
         return res.send(usersSummary);
     });
 });
@@ -55,7 +78,6 @@ app.get('/userdetail/:id', (req, res) => {
         return res.send({ error: 'user with that id not found' });
     });    
 });
-
 // demonstration: langes laden synchron 
 // effekt: blockiert den server, nutzer 2 
 // muss auf nutzer 1 warten
@@ -67,7 +89,6 @@ app.get('/longload_synchron', (req, res) => {
 
     return res.send('daten geladen');
 });
-
 // demonstration: langes laden asynchron 
 // effekt: blockiert den server NICHT, nutzer 2 
 // muss NICHT auf nutzer 1 warten
@@ -91,8 +112,6 @@ app.get('/users_delay', (req, res) => {
         10000
     );
 });
-
-
 // app.get('/', (req, res) => {
 //     return res.send('Hallo World');
 // });

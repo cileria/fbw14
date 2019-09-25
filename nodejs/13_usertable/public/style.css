@@ -67,3 +67,14 @@ a {
     vertical-align: top;
     padding: 4px;
 }
+
+.search div {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.search input, .search button {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 4px;
+}
