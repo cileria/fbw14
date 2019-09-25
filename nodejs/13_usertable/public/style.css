@@ -12,6 +12,7 @@ body {
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 .header {
@@ -28,13 +29,36 @@ a {
     height: 50%;
 }
 
-img {
+.spinner {
     display: block;
     margin: 0 auto;
 }
 
-table {
+.profile-pic img {
+    height: 250px;
+}
+
+.profile {
+    display: flex;
+    width: 600px;
+    margin: 15px auto;
+}
+
+.profile h3 {
+    margin-left: 8px;
+}
+
+.allusers {
     width: 350px;
     margin: 20px auto;
     text-align: left;
+}
+
+.userdetails {
+    padding: 6px;
+}
+
+.userdetails td {
+    vertical-align: top;
+    padding: 4px;
 }
