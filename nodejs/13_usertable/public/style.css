@@ -54,6 +54,11 @@ a {
     text-align: left;
 }
 
+.allusers tr:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .userdetails {
     padding: 6px;
 }
