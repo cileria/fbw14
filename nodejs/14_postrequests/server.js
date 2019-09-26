@@ -54,7 +54,8 @@ app.get('/newuser', (req, res) => {     // neue username soll über req.query.q 
     return res.send(newUser)    
 });
 
-// POST-Methode ist die richtige Art, Daten an den Server zu schicken
+// POST-Methode ist die richtige Art, um Daten auf dem Server
+// zu erstellen
 app.post('/newuser', (req, res) => {
     const newUsername = req.body.username;
     // hier erstellen wir einen neuen nutzer
