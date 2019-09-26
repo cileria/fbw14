@@ -57,14 +57,14 @@ app.get('/newuser', (req, res) => {     // neue username soll über req.query.q 
 // POST-Methode ist die richtige Art, Daten an den Server zu schicken
 app.post('/newuser', (req, res) => {
     const newUsername = req.body.username;
-    return res.send(
-        {
-            ...req.body,
-            hallo: 'world'
-        });
-
-    // Aufgabe:
-    // Füge dem users-Array den neuen Nutzer zu.
+    // hier erstellen wir einen neuen nutzer
+    const newUser = {
+        id: users.length + 1,
+        name: newUsername
+    }
+    // wir pushen den neuen nutzer in das array
+    users.push(newUser);
+    return res.send(newUser) 
 });
 
 app.get('/', (req, res) => {
