@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
+const randomstring = require('randomstring');
 
 // alle dateien, die im public drin sind,
 // können von außen über den dateinamen geladen werden
 // / -> lädt automatisch index.html
 // /main.js -> lädt die datei main.js
 // /style.css -> lädt die datei style.css
+app.use(express.json());
 app.use('/', express.static('public'));
 
 app.get('/users', (req, res) => {
@@ -115,6 +117,53 @@ app.get('/users_delay', (req, res) => {
 // app.get('/', (req, res) => {
 //     return res.send('Hallo World');
 // });
+
+app.post('/users', (req, res) => {
+    if(!(req.body.name && req.body.email && req.body.description && req.body.profilePic)) {
+        return res.send({ error: 'name, email, description and profilePic required' });
+    }
+
+    // alle variablen da, weiter gehts ...
+    const newUserId = randomstring.generate(10);
+    // __dirname = aktueller pfad
+    fs.readFile(__dirname + '/users.json', 'utf-8', 
+    (err, data) => {
+        if(err) return res.send({ error: 'file couldnt be read' });
+
+        // users.json konvertieren nach JS-objekt
+        let users = null;
+        try {
+            users = JSON.parse(data);
+        }
+        catch(e) {
+            return res.send({ error: e });
+        }
+
+        // neuen nutzer in das array reintun
+        users.push({
+            id: newUserId,
+            name: req.body.name,
+            email: req.body.email,
+            description: req.body.description,
+            profilePic: req.body.profilePic
+        });
+
+        let usersJSON = null;
+        try {
+            usersJSON = JSON.stringify(users);
+        }
+        catch(e) {
+            return res.send({ error: e });
+        }
+
+        fs.writeFile(__dirname + '/users.json', usersJSON, () => {});
+
+        return res.send({ 
+            error: 0, newUserId: newUserId
+        });
+    });
+
+});
 
 console.log('Hallo World from Backend.');
 app.listen(3000);
