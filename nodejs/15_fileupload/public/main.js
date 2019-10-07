@@ -22,8 +22,6 @@ btnSendFileObj.onclick = async () => {
         if(response.ok) {
             // 2. das objekt als json interpretieren -> wir bekommen ein objekt
             const responseJson = await response.json();
-            // 3. als string darstellen
-            const responseStr = JSON.stringify(responseJson);
         }
     }
     catch (e) {

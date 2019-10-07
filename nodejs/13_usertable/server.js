@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
+const fileUpload = require('express-fileupload');
 const randomstring = require('randomstring');
 
 // alle dateien, die im public drin sind,
@@ -9,6 +10,7 @@ const randomstring = require('randomstring');
 // /main.js -> lädt die datei main.js
 // /style.css -> lädt die datei style.css
 app.use(express.json());
+app.use(fileUpload());
 app.use('/', express.static('public'));
 
 app.get('/users', (req, res) => {
@@ -119,49 +121,61 @@ app.get('/users_delay', (req, res) => {
 // });
 
 app.post('/users', (req, res) => {
-    if(!(req.body.name && req.body.email && req.body.description && req.body.profilePic)) {
-        return res.send({ error: 'name, email, description and profilePic required' });
+    if(!(req.body.name && req.body.email && req.body.description && req.files.imageUpload)) {
+        return res.send({ error: 'name, email, description and imageUpload required' });
     }
 
     // alle variablen da, weiter gehts ...
     const newUserId = randomstring.generate(10);
-    // __dirname = aktueller pfad
-    fs.readFile(__dirname + '/users.json', 'utf-8', 
-    (err, data) => {
-        if(err) return res.send({ error: 'file couldnt be read' });
 
-        // users.json konvertieren nach JS-objekt
-        let users = null;
-        try {
-            users = JSON.parse(data);
-        }
-        catch(e) {
-            return res.send({ error: e });
-        }
+    // sampleFile ist referenz auf datei
+    let sampleFile = req.files.imageUpload;
+  
+    // Use the mv() method to place the file somewhere on your server
+    sampleFile.mv(__dirname + '/public/' + newUserId + '.jpg', function(err) {
+      if (err)
+        return res.status(500).send({ error: err });
 
-        // neuen nutzer in das array reintun
-        users.push({
-            id: newUserId,
-            name: req.body.name,
-            email: req.body.email,
-            description: req.body.description,
-            profilePic: req.body.profilePic
+        // __dirname = aktueller pfad
+        fs.readFile(__dirname + '/users.json', 'utf-8', 
+        (err, data) => {
+            if(err) return res.send({ error: 'file couldnt be read' });
+    
+            // users.json konvertieren nach JS-objekt
+            let users = null;
+            try {
+                users = JSON.parse(data);
+            }
+            catch(e) {
+                return res.send({ error: e });
+            }
+    
+            // neuen nutzer in das array reintun
+            users.push({
+                id: newUserId,
+                name: req.body.name,
+                email: req.body.email,
+                description: req.body.description,
+                profilePic: newUserId + '.jpg'
+            });
+    
+            let usersJSON = null;
+            try {
+                usersJSON = JSON.stringify(users);
+            }
+            catch(e) {
+                return res.send({ error: e });
+            }
+    
+            fs.writeFile(__dirname + '/users.json', usersJSON, () => {});
+    
+            return res.send({ 
+                error: 0, newUserId: newUserId
+            });
         });
 
-        let usersJSON = null;
-        try {
-            usersJSON = JSON.stringify(users);
-        }
-        catch(e) {
-            return res.send({ error: e });
-        }
+    });    
 
-        fs.writeFile(__dirname + '/users.json', usersJSON, () => {});
-
-        return res.send({ 
-            error: 0, newUserId: newUserId
-        });
-    });
 
 });
 

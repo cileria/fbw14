@@ -11,7 +11,6 @@ app.use('/', express.static('public'));
 // wir benutzen fileUpload-middleware zum parsen
 // des request-bodys
 app.use(fileUpload());
-
 app.post('/upload', function(req, res) {
 
     if (!req.files || Object.keys(req.files).length === 0) {

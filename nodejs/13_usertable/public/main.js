@@ -100,7 +100,7 @@ const showAddUser = () => {
                     <textarea id="descriptionInput" placeholder="Description"></textarea>
                 </div>
                 <div class="adduser-right">
-                    <input type="text" id="fileInput" placeholder="Filename here" />
+                    <input type="file" id="fileInput" placeholder="Filename here" />
                 </div>
             </div>
             <div id="addUserBtn" class="adduser-btn">
@@ -121,7 +121,7 @@ const showAddUser = () => {
 
         const fileInputObj = document.getElementById('fileInput');
 
-        if(!(nameInputObj.value.length > 0 && emailInputObj.value.length > 0 && descriptionInputObj.value.length > 0 && fileInputObj.value.length > 0)){
+        if(!(nameInputObj.value.length > 0 && emailInputObj.value.length > 0 && descriptionInputObj.value.length > 0 && fileInputObj.files.length > 0)){
             alert('Alle Felder müssen ausgefüllt sein.');
             return;
         }
@@ -133,22 +133,25 @@ const showAddUser = () => {
             return;
         }
 
-        let body = {
-            name: nameInputObj.value,
-            email: emailInputObj.value,
-            description: descriptionInputObj.value,
-            profilePic: fileInputObj.value
-        };
+        // let body = {
+        //     name: nameInputObj.value,
+        //     email: emailInputObj.value,
+        //     description: descriptionInputObj.value,
+        //     profilePic: fileInputObj.value
+        // };
+
+
+        const formData = new FormData();
+        formData.append('name', nameInputObj.value);
+        formData.append('email', emailInputObj.value);
+        formData.append('description', descriptionInputObj.value);
+        formData.append('imageUpload', fileInputObj.files[0]);
 
         try {
             const response = await fetch('http://localhost:3000/users',
                 {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
                     method: 'POST',
-                    body: JSON.stringify(body)
+                    body: formData
                 });
             // falls http-antwort 200 oder 304 war 
             if(response.ok) {
