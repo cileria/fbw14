@@ -78,3 +78,34 @@ a {
     text-align: center;
     padding: 4px;
 }
+
+.adduser {
+    width: 600px;
+    margin: 10px auto;
+}
+
+.adduser-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.adduser-left {
+}
+
+.adduser-form input, .adduser-form textarea {
+    display: block;
+    font-size: 1.1em;
+    width: 280px;
+    padding: 3px;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+.adduser-btn {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.adduser-btn button {
+    font-size: 1.3em;    
+}

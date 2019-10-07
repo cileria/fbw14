@@ -43,7 +43,7 @@ const loadUsers = async(search) => {
     contentObj.innerHTML = table;
 }
 
-loadUsers();
+// loadUsers();
 
 const showUser = async (id) => {
     

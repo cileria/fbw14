@@ -13,12 +13,28 @@
     <div class="header">
         <h2>UserTable</h2>
         <div>
-            <a href="#" onClick="loadUsers()">Show All Users </a>| <a href="#" onClick="showSearch()">Search</a>
+            <a href="#" onClick="loadUsers()">Show All Users </a>| <a href="#" onClick="showSearch()">Search</a> | <a
+                href="#" onClick="showAddUser()">Add User</a>
         </div>
     </div>
     <div class="container">
         <div class="content" id="content">
+            <div class="adduser">
+                <div class="adduser-form">
+                    <div class="adduser-left">
+                        <input type="text" id="nameInput" placeholder="Name here" />
+                        <input type="text" id="emailInput" placeholder="Email here" />
+                        <textarea id="descriptionInput" placeholder="Description"></textarea>
+                    </div>
+                    <div class="adduser-right">
+                        <input type="text" id="fileInput" placeholder="Filename here" />
 
+                    </div>
+                </div>
+                <div class="adduser-btn">
+                    <button>Nutzer erstellen</button>
+                </div>
+            </div>
         </div>
     </div>
     <script src="main.js"></script>
