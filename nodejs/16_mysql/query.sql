@@ -46,3 +46,49 @@ update person set age = 36 where id = 1;
 update person set age = age + 10;
 -- alle sollen den zusatz 'Junior' haben
 update person set firstname = concat(firstname, ' Junior');
+
+
+-- finde alle customers mit dem anfangsbuchstaben K für firstname
+select * from customers where firstname like 'K%';
+-- alle customers deren lastname entweder mit A oder N ended
+select * from customers where lastname like '%A' or lastname like '%N';
+-- firstname, lastname and age aller customers, die jünger als 35 sind
+select firstname, lastname, timestampdiff(year, birthdate, current_date()) as age 
+from customers where timestampdiff(year,birthdate, current_date()) < 35;
+-- finde alle customers die sich nach 20 uhr abends registriert haben
+select * from customers where hour(registered) > 20;
+-- alle customers die einen email account bei googlemail haben
+select * from customers where email like '%googlemail%' or email like '%gmail%';
+
+
+-- Lesen/Select
+-- Alle
+select * from customers;
+-- filtern
+select * from customers where city = 'Berlin';
+-- sortieren
+select * from customers where lastname = 'Meier' order by firstname desc;
+
+-- Verändern/Update
+update customers set city = 'Bln' where city = 'Berlin';
+update customers set firstname = lcase(firstname);
+-- select * from customers;
+
+-- Einfügen/Insert
+insert into customers (
+	id, 
+    firstname, 
+    lastname, 
+    registered, 
+    birthdate, phone, city, street, postal, email
+)
+values (
+	1001,
+	'Max', 
+    'Mustermann', 
+    now(), 
+    '1988-01-10', '49152792', 'Berlin', 'Main Street 5', '14332', 'max@abc.com'
+);
+
+-- löschen/delete
+delete from customers where city = 'Koeln';
