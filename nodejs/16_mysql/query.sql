@@ -92,3 +92,4 @@ values (
 
 -- löschen/delete
 delete from customers where city = 'Koeln';
+
