@@ -1,0 +1,8 @@
+Aufgabe: Erstelle eine MySQL-Version des Usertable-Projekts.
+
+1. Datenbank anlegen.
+2. Tabelle anlegen. ID empfohlen mit AI (autoincrement).
+3. Daten eingeben.
+4. Kopie der server.js -> server_mysql.js 
+5. In der server_mysql.js, connecte zur Datenbank
+   und passe deine Queries an.
