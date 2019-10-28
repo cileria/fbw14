@@ -2,6 +2,9 @@ const express = require('express');
 const session = require('express-session');
 const app = express();
 
+
+// gibt jedem HTTP-packet eine cookie-id in den header
+// rein
 app.use(session({
     secret: 'mySecretKey',
     resave: true,
