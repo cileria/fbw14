@@ -1,0 +1,12 @@
+Aufgabe:
+
+1. Erstelle ein Mongo-Schema "authdb".
+2. Erstelle eine Collection "users".
+3. Erstelle 3 Nutzer:
+   "ralf@gmail.com", "ralfpw"
+   "steffi@gmail.com", "steffipw"
+   "sandra@yahoo.com", "sandrapw"
+4. Erstelle ein Mongoose-Schema, was zu der Collection passt.
+5. Erweitere Dein Authentication-Server so, dass sich alle
+   Nutzer einloggen können und dass jeder Nutzer außer "ralf"
+   auf "/content" zugreifen kann. Alle dürfen auf "/private" zugreifen.

@@ -37,6 +37,7 @@ app.get('/login', (req, res) => {
             if(rows.length > 0) {
                 // session wird erzeugt
                 req.session.user = req.query.email;
+                req.session.pages = rows[0].pages;
                 return res.send({ message: 'login successful' });
             }
 
@@ -59,7 +60,7 @@ const auth = (req, res, next) => {
 app.get('/content', auth, (req, res) => {
     // callback funktion 1
 
-    if(req.session.user !== 'ralf@gmail.com') {
+    if(req.session.pages.split(',').includes('content')) {
         return res.send('Secret area!');
     }
 
@@ -68,7 +69,12 @@ app.get('/content', auth, (req, res) => {
 
 app.get('/privateProfile', auth, (req, res) => {
     // callback funktion 2
-    return res.send('Private area!');
+
+    if(req.session.pages.split(',').includes('privateProfile')) {
+        return res.send('Private profile!');
+    }
+
+    return res.send('Unauthorized');
 });
 
 app.get('/logout', auth, (req, res) => {
