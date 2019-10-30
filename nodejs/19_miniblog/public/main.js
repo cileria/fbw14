@@ -1,4 +1,8 @@
 const mainObj = document.getElementById('main');
+const navCreatePostObj = document.getElementById('navCreatePost');
+const navPipeObj = document.getElementById('navPipe');
+const navLogoutObj = document.getElementById('navLogout');
+const navLoginObj = document.getElementById('navLogin');
 
 const loadBlogPosts = async () => {
 
@@ -61,5 +65,83 @@ const createPost = async () => {
     }     
 }
 
+const loadLogin = () => {
+    const login = `
+        <div class="blogposts login">
+            <input type="text" placeholder="email" id="email" />
+            <input type="password" placeholder="password" id="password" />
+            <button id="btnLogin" onclick="login()">Login</button>
+        </div>`;
+
+    mainObj.innerHTML = login;
+}
+
+const login = async () => {
+    const emailObj = document.getElementById('email');
+    const passwordObj = document.getElementById('password');
+
+    try {
+        const response = await fetch('http://localhost:3000/login',
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: emailObj.value,
+                    password: passwordObj.value
+                })
+            });
+        // falls http-antwort 200 oder 304 war 
+        if(response.ok) {
+            // 2. das objekt als json interpretieren -> wir bekommen ein objekt
+            const responseObj = await response.json();
+            if(responseObj.error != 0) {
+                alert('Login failed!');
+
+                emailObj.value = '';
+                passwordObj.value = '';
+                return;
+            }
+
+            navCreatePostObj.style.display = 'inline-block';
+            navPipeObj.style.display = 'inline-block';
+            navLoginObj.style.display = 'none';
+            navLogoutObj.style.display = 'inline-block';
+            loadBlogPosts();
+        }
+    }
+    catch (e) {
+        console.log('Error: ' + e); 
+    }  
+}
+
+const logout = async () => {
+    try {
+        const response = await fetch('http://localhost:3000/logout',
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+        if(response.ok) {
+            const responseObj = await response.json();
+            if(responseObj.error != 0) {
+                alert('Logout failed!');
+                return;
+            }
+
+            navCreatePostObj.style.display = 'none';
+            navPipeObj.style.display = 'none';
+            navLoginObj.style.display = 'inline-block';
+            navLogoutObj.style.display = 'none';
+            loadBlogPosts();
+        }
+    }
+    catch (e) {
+        console.log('Error: ' + e); 
+    }      
+}
+
 loadBlogPosts();
 
+navCreatePostObj.style.display = 'none';
+navPipeObj.style.display = 'none';
+navLogoutObj.style.display = 'none';

@@ -13,6 +13,11 @@ html, body {
     background: url(stars.jpg);
 }
 
+.menu {
+    display: flex;
+    justify-content: space-between;
+}
+
 .navlink {
     cursor: pointer;
 }
@@ -26,11 +31,16 @@ html, body {
     margin: 0 auto;
 }
 
+.login {
+    width: 300px; 
+}
+
 .blogpost {
     margin: 4px;
     padding: 0 4px;
     border: 1px solid white;
 }
+
 
 .new-blogpost {
     width: 600px;

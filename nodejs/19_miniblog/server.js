@@ -26,10 +26,10 @@ app.use(session({
 }));
 
 // Aufgabe: schreibe eine Logout-Funktion!
-app.get('/login', (req, res) => {
+app.post('/login', (req, res) => {
     const sql = `select * from users where email = ? and password = ?`;
     connection.query(
-        sql, [req.query.email, req.query.password],
+        sql, [req.body.email, req.body.password],
         (err, rows) => {
             if(err) {
                 console.log('Error: ' + err);
@@ -38,12 +38,11 @@ app.get('/login', (req, res) => {
 
             if(rows.length > 0) {
                 // session wird erzeugt
-                req.session.user = req.query.email;
-                req.session.pages = rows[0].pages;
-                return res.send({ message: 'login successful' });
+                req.session.user = req.body.email;
+                return res.send({ error: 0, message: 'login successful' });
             }
 
-            return res.send({ error: 'login not found' });    
+            return res.send({ error: 1000, message: 'login not found' });    
         });    
 });
 
@@ -59,9 +58,9 @@ const auth = (req, res, next) => {
     next();
 }
 
-app.get('/logout', auth, (req, res) => {
+app.post('/logout', (req, res) => {
     delete req.session.user;
-    return res.send('logout successfull');
+    return res.send({ error: 0, message: 'logout successfull' });
 });
 
 app.get('/blogposts', (req, res) => {
@@ -78,7 +77,7 @@ app.get('/blogposts', (req, res) => {
         });      
 })
 
-app.post('/blogpost', (req, res) => {
+app.post('/blogpost', auth, (req, res) => {
     if(!(req.body.title && req.body.content)) {
         return res.send({ error: 'title and content required' });
     }

@@ -12,7 +12,15 @@
 <body>
     <div class="header">
         <h1>Miniblog</h1>
-        <div><span class="navlink" onclick="loadBlogPosts()">Artikel</span> | <span class="navlink" onclick="loadCreateBlogPost()"">Neuen Artikel verfassen</span></div>
+        <div class="menu">
+            <div>
+                <span class="navlink" onclick="loadBlogPosts()">Artikel</span><span id="navPipe">&nbsp;|&nbsp;</span><span class="navlink" id="navCreatePost" onclick="loadCreateBlogPost()"">Neuen Artikel verfassen</span>
+            </div>
+            <div>
+                <span class="navlink" id="navLogin" onclick="loadLogin()">Login</span>
+                <span class="navlink" id="navLogout" onclick="logout()">Logout</span>
+            </div>
+        </div>
     </div>
     <div id="main">
     </div>
