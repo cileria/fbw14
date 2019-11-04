@@ -176,7 +176,7 @@ const restartTimer = () => {
         showLoggedOut()
     }, 
     // 1000*60*5); // 5 minuten
-    1000*30);    
+    1000*31);    
 }
 
 addEventListener('click', () => {
