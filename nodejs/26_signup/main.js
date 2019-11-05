@@ -1,5 +1,8 @@
 // mysql client bibliothek
 const mysql = require('mysql');
+const express = require('express');
+
+const app = express();
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -32,4 +35,20 @@ const addUser = (email, password) => {
         });
 }
 
-addUser('max@gmail.com', 'maxpw');
+app.get('/users', (req, res) => {
+    const query = `
+        select * from users
+    `;
+    connection.query(
+        query,
+        (err, rows) => {
+            if(err) {
+                console.log('Error: ' + err);
+                return;
+            }
+
+            return res.send(rows);
+        });
+});
+
+app.listen( 3000 );
