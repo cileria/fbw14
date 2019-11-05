@@ -17,6 +17,7 @@ const connection = mysql.createConnection({
 // { error: 1001, message: 'user already exists' }
 // 2) es soll geprüft werden, dass req.body.email und req.body.password
 // auch angegeben wurde, 
+// 3) dass das password als hash gespeichert wird
 
 const addUser = (req, res) => {
     console.log(`incoming request, attempt to create user with email: ${req.body.email} and 
