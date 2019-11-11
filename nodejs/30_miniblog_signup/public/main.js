@@ -3,6 +3,8 @@ const navCreatePostObj = document.getElementById('navCreatePost');
 const navPipeObj = document.getElementById('navPipe');
 const navLogoutObj = document.getElementById('navLogout');
 const navLoginObj = document.getElementById('navLogin');
+const navSignupObj = document.getElementById('navSignup');
+const navPipeSignupObj = document.getElementById('navPipeSignup');
 
 const loadBlogPosts = async () => {
 
@@ -76,6 +78,18 @@ const loadLogin = () => {
     mainObj.innerHTML = login;
 }
 
+const loadSignup = () => {
+    const signup = `
+    <div class="blogposts signup">
+    <input type="text" placeholder="email" id="emailSignup" />
+    <input type="password" placeholder="password" id="passwordSignup" />
+    <input type="password" placeholder="password repeat" id="passwordRepeat" />
+    <button id="btnSignup" onclick="signup()">Jetzt registrieren</button>
+    </div>`;
+    
+    mainObj.innerHTML = signup;
+}
+
 const login = async () => {
     const emailObj = document.getElementById('email');
     const passwordObj = document.getElementById('password');
@@ -110,12 +124,60 @@ const login = async () => {
     }  
 }
 
+const signup = async () => {
+    const emailObj = document.getElementById('emailSignup');
+    const passwordObj = document.getElementById('passwordSignup');
+    const passwordRepeatObj = document.getElementById('passwordRepeat');
+    
+    if(passwordObj.value !== passwordRepeatObj.value) {
+        alert('Passwörter müssen übereinstimmen!');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/signup',
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: emailObj.value,
+                password: passwordObj.value
+            })
+        });
+        // falls http-antwort 200 oder 304 war 
+        if(response.ok) {
+            // 2. das objekt als json interpretieren -> wir bekommen ein objekt
+            const responseObj = await response.json();
+            if(responseObj.error != 0) {
+                alert('Signup failed!');
+                
+                emailObj.value = '';
+                passwordObj.value = '';
+                passwordRepeatObj.value = '';
+                return;
+            }
+            
+            const thanksForSignup = `
+                <h2 class="thanks">Danke für Ihre Registrierung. In Kürze wird eine Email an ${emailObj.value} geschickt!</h2>
+            `;
+
+            mainObj.innerHTML = thanksForSignup;
+        }
+    }
+    catch (e) {
+        console.log('Error: ' + e); 
+    }  
+
+}
+
 const showLoggedIn = () => {
     localStorage.setItem('loggedIn', '1');
     navCreatePostObj.style.display = 'inline-block';
     navPipeObj.style.display = 'inline-block';
     navLoginObj.style.display = 'none';
     navLogoutObj.style.display = 'inline-block';
+    navSignupObj.style.display = 'none';
+    navPipeSignupObj.style.display = 'none';
     loadBlogPosts();
 }
 
@@ -124,7 +186,9 @@ const showLoggedOut = () => {
     navCreatePostObj.style.display = 'none';
     navPipeObj.style.display = 'none';
     navLoginObj.style.display = 'inline-block';
+    navSignupObj.style.display = 'inline-block';
     navLogoutObj.style.display = 'none';
+    navPipeSignupObj.style.display = 'inline-block';
     loadBlogPosts();    
 }
 
@@ -149,6 +213,9 @@ const logout = async () => {
         console.log('Error: ' + e); 
     }      
 }
+
+
+
 
 // beim laden schaue ich, ob user eingeloggt ist
 const loggedIn = localStorage.getItem('loggedIn');
