@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mini-Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Miniblog</h1>
+        <div class="menu">
+            <div>
+                <span class="navlink" onclick="loadBlogPosts()">Artikel</span><span id="navPipe">&nbsp;|&nbsp;</span><span class="navlink" id="navCreatePost" onclick="loadCreateBlogPost()"">Neuen Artikel verfassen</span>
+            </div>
+            <div>
+                <span class="navlink" id="navLogin" onclick="loadLogin()">Login</span> <span id="navPipeSignup">&nbsp;|&nbsp;</span>
+                <span class="navlink" id="navSignup" onclick="loadSignup()">Sign-Up</span>
+                <span class="navlink" id="navLogout" onclick="logout()">Logout</span>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
