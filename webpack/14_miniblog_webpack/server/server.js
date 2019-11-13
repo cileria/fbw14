@@ -5,6 +5,22 @@ const mysql = require('mysql');
 const sendMail = require('./mailer');
 const randomstring = require('randomstring');
 const bcrypt = require('bcrypt');
+const cors = require('cors');
+
+// zum definieren von umgebungsvariablen
+// 
+// $ export MODE=PRODUCTION
+// $ export MODE=DEVELOPMENT
+
+// ist umgebungsvariable MODE = PRODUCTION?
+if(process.env.MODE === 'PRODUCTION') {
+    console.log('Server wird in Produktions-Modus gestartet');
+    console.log(__dirname + '/../dist');
+    app.use('/', express.static(__dirname + '/../dist'));
+}
+else {
+    console.log('Server wird in Development-Modus gestartet');
+}
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -19,6 +35,12 @@ if(!connection) {
 }
 
 app.use('/', express.static('public'));
+// cookies auch an clients mit anderer domain schicken als localhost:3000
+// z.b. localhost:8080 usw.
+app.use(cors({
+    origin: 'http://localhost:8080',
+    credentials: true
+}));
 app.use(express.json());
 // gibt jedem HTTP-packet eine cookie-id in den header
 // rein
@@ -31,11 +53,11 @@ app.use(session({
 const addUser = (req, res) => {
     console.log(`incoming request, attempt to create user with email: ${req.body.email} and 
     password: ${req.body.password}`);
-
+    
     if(!(req.body.email && req.body.password)) {
         return res.send({ error: 1002, message: 'email and password required' });
     }
-
+    
     const queryUserExists = `select * from users where email = ?`;
     connection.query(
         queryUserExists, [req.body.email],

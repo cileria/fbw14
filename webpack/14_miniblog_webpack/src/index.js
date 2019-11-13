@@ -1,5 +1,9 @@
+import './index.html';
+import './style.css';
+
 const mainObj = document.getElementById('main');
 const navCreatePostObj = document.getElementById('navCreatePost');
+const navLoadArticleObj = document.getElementById('navLoadArticle');
 const navPipeObj = document.getElementById('navPipe');
 const navLogoutObj = document.getElementById('navLogout');
 const navLoginObj = document.getElementById('navLogin');
@@ -28,10 +32,12 @@ const loadCreateBlogPost = () => {
     const createblogpost = `<div class="new-blogpost">
     <input type="text" placeholder="Blog-Titel eingeben" id="title" />
     <textarea rows="10" id="content"></textarea>
-    <button onclick="createPost()">Artikel erstellen</button>
+    <button id="btnCreateArticle">Artikel erstellen</button>
     </div>`;
     
     mainObj.innerHTML = createblogpost;
+    const btnCreateArticleObj = document.getElementById('btnCreateArticle');
+    btnCreateArticleObj.onclick = createPost;
 }
 
 const createPost = async () => {
@@ -48,6 +54,7 @@ const createPost = async () => {
         {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({
                 title: title,
                 content: content
@@ -68,26 +75,30 @@ const createPost = async () => {
 }
 
 const loadLogin = () => {
-    const login = `
+    const loginHtml = `
     <div class="blogposts login">
     <input type="text" placeholder="email" id="email" />
     <input type="password" placeholder="password" id="password" />
-    <button id="btnLogin" onclick="login()">Login</button>
+    <button id="btnLogin">Login</button>
     </div>`;
     
-    mainObj.innerHTML = login;
+    mainObj.innerHTML = loginHtml;
+    const btnLoginObj = document.getElementById('btnLogin');
+    btnLoginObj.onclick = login;
 }
 
 const loadSignup = () => {
-    const signup = `
+    const signupHtml = `
     <div class="blogposts signup">
     <input type="text" placeholder="email" id="emailSignup" />
     <input type="password" placeholder="password" id="passwordSignup" />
     <input type="password" placeholder="password repeat" id="passwordRepeat" />
-    <button id="btnSignup" onclick="signup()">Jetzt registrieren</button>
+    <button id="btnSignup">Jetzt registrieren</button>
     </div>`;
     
-    mainObj.innerHTML = signup;
+    mainObj.innerHTML = signupHtml;
+    const btnSignupObj = document.getElementById('btnSignup');
+    btnSignupObj.onclick = signup;
 }
 
 const login = async () => {
@@ -98,6 +109,7 @@ const login = async () => {
         const response = await fetch('http://localhost:3000/login',
         {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 email: emailObj.value,
@@ -133,11 +145,12 @@ const signup = async () => {
         alert('Passwörter müssen übereinstimmen!');
         return;
     }
-
+    
     try {
         const response = await fetch('http://localhost:3000/signup',
         {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 email: emailObj.value,
@@ -158,16 +171,16 @@ const signup = async () => {
             }
             
             const thanksForSignup = `
-                <h2 class="thanks">Danke für Ihre Registrierung. In Kürze wird eine Email an ${emailObj.value} geschickt!</h2>
+            <h2 class="thanks">Danke für Ihre Registrierung. In Kürze wird eine Email an ${emailObj.value} geschickt!</h2>
             `;
-
+            
             mainObj.innerHTML = thanksForSignup;
         }
     }
     catch (e) {
         console.log('Error: ' + e); 
     }  
-
+    
 }
 
 const showLoggedIn = () => {
@@ -197,6 +210,7 @@ const logout = async () => {
         const response = await fetch('http://localhost:3000/logout',
         {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' }
         });
         if(response.ok) {
@@ -214,8 +228,12 @@ const logout = async () => {
     }      
 }
 
+navLoginObj.onclick = loadLogin;
+navSignupObj.onclick = loadSignup;
+navLogoutObj.onclick = logout;
 
-
+navLoadArticleObj.onclick = loadBlogPosts;
+navCreatePostObj.onclick = loadCreateBlogPost;
 
 // beim laden schaue ich, ob user eingeloggt ist
 const loggedIn = localStorage.getItem('loggedIn');
@@ -230,8 +248,8 @@ else {
         showLoggedIn();
     }
     else { // '0', 'null'
-        showLoggedOut();
-    }
+    showLoggedOut();
+}
 }
 
 let timerId = null;
