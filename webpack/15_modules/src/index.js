@@ -1,7 +1,7 @@
 import './index.html';
 import './style.css';
 
-import { login, signup } from './authentication';
+import { login, signup, logout } from './authentication';
 
 const mainObj = document.getElementById('main');
 const navCreatePostObj = document.getElementById('navCreatePost');
@@ -106,7 +106,7 @@ const loadSignup = () => {
     
     mainObj.innerHTML = signupHtml;
     const btnSignupObj = document.getElementById('btnSignup');
-    btnSignupObj.onclick = signup;
+    btnSignupObj.onclick = signup.bind(this, mainObj);
 }
 
 const showLoggedIn = () => {

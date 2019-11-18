@@ -81,7 +81,7 @@ export const signup = async (mainObj) => {
     
 }
 
-const logout = async (showLoggedOut) => {
+export const logout = async (showLoggedOut) => {
     try {
         const response = await fetch('http://localhost:3000/logout',
         {
