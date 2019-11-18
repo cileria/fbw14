@@ -1,6 +1,8 @@
 import './index.html';
 import './style.css';
 
+import { login, signup } from './authentication';
+
 const mainObj = document.getElementById('main');
 const navCreatePostObj = document.getElementById('navCreatePost');
 const navLoadArticleObj = document.getElementById('navLoadArticle');
@@ -9,6 +11,12 @@ const navLogoutObj = document.getElementById('navLogout');
 const navLoginObj = document.getElementById('navLogin');
 const navSignupObj = document.getElementById('navSignup');
 const navPipeSignupObj = document.getElementById('navPipeSignup');
+
+//
+// import * as domObjects from './domObjects';
+//
+// würde erfordern:
+// domObjects.mainObj.innerHTL = '...';
 
 const loadBlogPosts = async () => {
 
@@ -84,7 +92,7 @@ const loadLogin = () => {
     
     mainObj.innerHTML = loginHtml;
     const btnLoginObj = document.getElementById('btnLogin');
-    btnLoginObj.onclick = login;
+    btnLoginObj.onclick = login.bind(this, showLoggedIn);
 }
 
 const loadSignup = () => {
@@ -99,88 +107,6 @@ const loadSignup = () => {
     mainObj.innerHTML = signupHtml;
     const btnSignupObj = document.getElementById('btnSignup');
     btnSignupObj.onclick = signup;
-}
-
-const login = async () => {
-    const emailObj = document.getElementById('email');
-    const passwordObj = document.getElementById('password');
-    
-    try {
-        const response = await fetch('http://localhost:3000/login',
-        {
-            method: 'POST',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: emailObj.value,
-                password: passwordObj.value
-            })
-        });
-        // falls http-antwort 200 oder 304 war 
-        if(response.ok) {
-            // 2. das objekt als json interpretieren -> wir bekommen ein objekt
-            const responseObj = await response.json();
-            if(responseObj.error != 0) {
-                alert('Login failed!');
-                
-                emailObj.value = '';
-                passwordObj.value = '';
-                return;
-            }
-            
-            showLoggedIn(); // baue frontend um für eingeloggten user
-        }
-    }
-    catch (e) {
-        console.log('Error: ' + e); 
-    }  
-}
-
-const signup = async () => {
-    const emailObj = document.getElementById('emailSignup');
-    const passwordObj = document.getElementById('passwordSignup');
-    const passwordRepeatObj = document.getElementById('passwordRepeat');
-    
-    if(passwordObj.value !== passwordRepeatObj.value) {
-        alert('Passwörter müssen übereinstimmen!');
-        return;
-    }
-    
-    try {
-        const response = await fetch('http://localhost:3000/signup',
-        {
-            method: 'POST',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: emailObj.value,
-                password: passwordObj.value
-            })
-        });
-        // falls http-antwort 200 oder 304 war 
-        if(response.ok) {
-            // 2. das objekt als json interpretieren -> wir bekommen ein objekt
-            const responseObj = await response.json();
-            if(responseObj.error != 0) {
-                alert('Signup failed!');
-                
-                emailObj.value = '';
-                passwordObj.value = '';
-                passwordRepeatObj.value = '';
-                return;
-            }
-            
-            const thanksForSignup = `
-            <h2 class="thanks">Danke für Ihre Registrierung. In Kürze wird eine Email an ${emailObj.value} geschickt!</h2>
-            `;
-            
-            mainObj.innerHTML = thanksForSignup;
-        }
-    }
-    catch (e) {
-        console.log('Error: ' + e); 
-    }  
-    
 }
 
 const showLoggedIn = () => {
@@ -205,32 +131,10 @@ const showLoggedOut = () => {
     loadBlogPosts();    
 }
 
-const logout = async () => {
-    try {
-        const response = await fetch('http://localhost:3000/logout',
-        {
-            method: 'POST',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' }
-        });
-        if(response.ok) {
-            const responseObj = await response.json();
-            if(responseObj.error != 0) {
-                alert('Logout failed!');
-                return;
-            }
-            
-            showLoggedOut();
-        }
-    }
-    catch (e) {
-        console.log('Error: ' + e); 
-    }      
-}
 
 navLoginObj.onclick = loadLogin;
 navSignupObj.onclick = loadSignup;
-navLogoutObj.onclick = logout;
+navLogoutObj.onclick = logout.bind(this, showLoggedOut);
 
 navLoadArticleObj.onclick = loadBlogPosts;
 navCreatePostObj.onclick = loadCreateBlogPost;
