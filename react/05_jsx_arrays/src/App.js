@@ -32,6 +32,11 @@ class App extends Component {
     // 2. Stelle nur die deutschen Nutzer in einer Tabelle dar.
 
     const germanUsers = users.filter((user) => user.country === 'germany');
+
+    for(let user of users) {
+      console.log(user);
+    }
+
     return (
       <div>
         {hallo}

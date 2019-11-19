@@ -1,0 +1,22 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  height: 120px;
+}
+
+.main { 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  background-color: blue;
+  margin: 4px;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+}
