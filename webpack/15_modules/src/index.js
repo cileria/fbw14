@@ -12,7 +12,6 @@ const navLoginObj = document.getElementById('navLogin');
 const navSignupObj = document.getElementById('navSignup');
 const navPipeSignupObj = document.getElementById('navPipeSignup');
 
-//
 // import * as domObjects from './domObjects';
 //
 // würde erfordern:
