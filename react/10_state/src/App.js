@@ -35,8 +35,8 @@ class App extends Component {
           // state
           numbers: [...this.state.numbers, 7]
         })
-      }
-      , 4000  
+      },
+      4000
     )
   }
 
