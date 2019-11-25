@@ -60,6 +60,10 @@ class App extends Component {
     });
   }
 
+  showId = (id) => {
+    alert('clicked id: ' + id);
+  }
+
   render() {
     return (
       <div>
@@ -78,6 +82,7 @@ class App extends Component {
             this.state.fruits.map((fruit) => <tr key={fruit.id} style={{ backgroundColor: fruit.color }}>
               <td>{fruit.name}</td>
               <td>{fruit.color}</td>
+              <td><button onClick={() => this.showId(fruit.id)}>Show Id</button></td>
             </tr>)
           }
           </tbody>
