@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
-import B from './B';
+import User from './User';
 
 class App extends Component {
   
   state = {
-    x: 0
+    users: [
+      { name: 'paul', id: 1 },
+      { name: 'bob', id: 2 },
+      { name: 'rebecca', id: 3 },
+      { name: 'peter', id: 4 },
+      { name: 'sandra', id: 5 }
+    ]
   }
 
-  callMe = () => {
-    // alert('Hallo World');
+  delete = (id) => {
+    const newUsers = this.state.users.filter( (user) => user.id !== id);
     this.setState({
-      x: this.state.x + 1
-    })
-  } 
-  
-  callMeWithParam = (p) => {
-    alert('p = ' + p);
+      users: newUsers
+    });
   }
 
   render() {
     return (
       <div>
-        Hallo World
-        <B 
-          callMeHandler={this.callMe} 
-          callMeWithParamHandler={this.callMeWithParam}
-          />
-        x = {this.state.x}
+        { this.state.users && this.state.users.map((user) => <User name={user.name} key={user.id} id={user.id} deleteHandler={this.delete} /> )}
       </div>
     );
   }
