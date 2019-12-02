@@ -10,7 +10,7 @@ class App extends Component {
       { name: 'sandra', id : 2, selected: false },
       { name: 'steven', id : 3, selected: false }
     ],
-    newUsername: '',
+    newUsername: 'peter',
     selectedUserIndex: 0
   }
   
@@ -19,15 +19,32 @@ class App extends Component {
       return {...user, selected: userIndex === user.id ? true : false}
     });
 
+    this.setState({ 
+      users: newUsers,
+      newUsername: newUsers[userIndex-1].name,
+      selectedUserIndex: userIndex - 1
+    });
+  }
+
+  onChangeUsername = (e) => {
+    const newUsers = [...this.state.users];
+    newUsers[this.state.selectedUserIndex].name = e.target.value;
+
     this.setState({
-      users: newUsers
+      users: newUsers,
+      newUsername: e.target.value
     });
   }
 
   render() {
     return (
       <div>
-        <input type="text" name="username" value={this.newUsername} />
+        <input 
+          type="text" 
+          name="username" 
+          value={this.state.newUsername} 
+          onChange={this.onChangeUsername}
+        />
         {this.state.users.map( (user) => <User 
             key={user.id} 
             username={user.name} 
