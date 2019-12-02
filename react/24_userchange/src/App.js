@@ -16,7 +16,10 @@ class App extends Component {
   
   select = (userIndex) => {
     const newUsers = this.state.users.map((user) => { 
-      return {...user, selected: userIndex === user.id ? true : false}
+      return {
+        ...user, 
+        selected: userIndex === user.id ? true : false
+      }
     });
 
     this.setState({ 
