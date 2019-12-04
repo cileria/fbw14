@@ -27,10 +27,10 @@ class App extends Component {
     return (
       <div>
         <button onClick={this.generateRandomNumbers}>Generate New Random Numbers</button>
-        {/* {this.state.randomStringLengths && this.state.randomStringLengths.map((rsl, index) => <RandomStringGenerator key={index} stringLength={rsl} />)} */}
-        <RandomStringGenerator key={0} stringLength={this.state.randomStringLengths[0]} />
+        {this.state.randomStringLengths && this.state.randomStringLengths.map((rsl, index) => <RandomStringGenerator key={index} stringLength={rsl} />)}
+        {/* <RandomStringGenerator key={0} stringLength={this.state.randomStringLengths[0]} />
         <RandomStringGenerator key={1} stringLength={this.state.randomStringLengths[1]} />
-        <RandomStringGenerator key={2} stringLength={this.state.randomStringLengths[2]} />
+        <RandomStringGenerator key={2} stringLength={this.state.randomStringLengths[2]} /> */}
                 
       </div>
     );
