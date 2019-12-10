@@ -2,18 +2,31 @@ import React, { Component } from 'react'
 
 export default class D extends Component {
     
-    lastReceivedRandomNumber = 0;
+    lastReceivedRandomNumber = -1;
     randomNumberOfD = 0;
     product = 0;
 
     shouldComponentUpdate(nextProps, nextState) {
-        this.lastReceivedRandomNumber = nextProps.randomNumber;
-        this.randomNumberOfD = Math.floor( Math.random() * 10 );
-        this.product = this.randomNumberOfD * this.lastReceivedRandomNumber;
+        if((nextProps.randomNumber !== this.lastReceivedRandomNumber) || this.lastReceivedRandomNumber === -1) {
+            this.lastReceivedRandomNumber = nextProps.randomNumber;
+            this.randomNumberOfD = Math.floor( Math.random() * 10 );
+            this.product = this.randomNumberOfD * this.lastReceivedRandomNumber;
 
-        return true;
+            return true;
+        }
+
+        return false;
     }    
     
+    componentDidUpdate() {
+        if(this.product > 100) {
+            this.props.greaterThan100(true);
+        }
+        else {
+            this.props.greaterThan100(false);
+        }
+    }
+
     render() {
         return (
             <div>

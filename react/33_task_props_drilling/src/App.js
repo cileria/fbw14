@@ -28,7 +28,7 @@ class App extends Component {
         <h2>App Component</h2>
         <button onClick={this.generateRandomNumber}>Generate Random Number</button>
         {/* wir schicken randomNumberOfApp an Component C */}
-        <C randomNumber={this.state.randomNumberOfApp} />
+        <C randomNumber={this.state.randomNumberOfApp} greaterThan100={this.greaterThan100} />
         <B isGreaterThan100={this.state.isGreaterThan100} />
       </div>
     );

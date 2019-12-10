@@ -5,7 +5,7 @@ export default function B(props) {
     return (
         <div>
             B
-            <C x={props.x} />
+            <C x={props.x} f={props.f} />
         </div>
     )
 }

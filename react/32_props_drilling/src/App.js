@@ -8,6 +8,10 @@ class App extends Component {
     x: 0
   }
   
+  sayHallo = () => {
+    alert('Hallo World');
+  }
+
   incrementX = () => {
     this.setState({
       x: this.state.x + 1
@@ -18,7 +22,7 @@ class App extends Component {
     return (
       <div>
         <button onClick={this.incrementX}>IncrementX</button>
-        <B x={this.state.x} />
+        <B x={this.state.x} f={this.sayHallo} />
       </div>
     );
   }

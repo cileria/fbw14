@@ -19,7 +19,7 @@ export default class C extends Component {
         return (
             <div>
                 C = {this.lastReceivedRandomNumber} x {this.randomNumberOfC} = {this.product}
-                <D randomNumber={this.product} />
+                <D randomNumber={this.product} greaterThan100={this.props.greaterThan100} />
             </div>
         )
     }
