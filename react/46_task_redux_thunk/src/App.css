@@ -1,0 +1,38 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(161, 194, 255);
+}
+
+.header {
+  height: 120px;
+  border: 1px solid rgb(191, 213, 255);
+  padding: 6px;
+}
+
+.header-logo {
+  height: 60px;
+  line-height: 60px;
+}
+
+.header-search {
+  display: flex;
+  justify-content: flex-end;
+}
+
+input, button {
+  font-size: 1.5em;
+}
+
+table {
+  width: 700px;
+  margin: 20px auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
