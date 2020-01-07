@@ -1,0 +1,13 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.h2Style {
+  color: red; 
+  background-color: blue;
+}
+
+#bla {
+  box-shadow: 2px 2px 2px red;
+}

@@ -1,0 +1,30 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(212, 212, 212);
+    background-color: rgb(24, 201, 38);
+}
+
+h1 {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+
+    .nav-start {
+        color: black;
+    }
+
+    .nav-profile {
+        color: rgba(95, 95, 95, 0.76);
+    }
+
+    .nav-logout {
+        color: rgba(45, 0, 243, 0.76);
+    }
+}

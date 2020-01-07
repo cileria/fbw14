@@ -1,0 +1,13 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  height: 80px;
+  background-color: cornflowerblue;
+}
+
+.article {
+  background-color: rgb(103, 156, 255);
+}
